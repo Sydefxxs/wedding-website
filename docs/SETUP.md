@@ -2,6 +2,9 @@
 
 The site already runs without any accounts (on the starter content in `content/placeholder.ts`). These steps connect the editor (Sanity) and put it online (Vercel). About 20 minutes, all free tiers.
 
+## 0. Preview (already live)
+**https://sydefxxs.github.io/wedding-website/** — GitHub Pages, rebuilt by `.github/workflows/pages.yml` on every push to `main` using `scripts/build-pages.sh`. Static only: RSVP is a demo (try "Test Guest"), no editor. Use it to look and share with each other; send guests the Vercel/domain version once RSVPs save.
+
 ## 1. Run it on your computer
 ```bash
 npm install

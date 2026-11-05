@@ -18,7 +18,8 @@ Each phase ends with something we can open and react to. Agents/skills reference
 - [x] Self-hosted fonts (Cormorant Garamond + Jost)
 - [x] Layout: menu that turns solid on scroll (RSVP always visible), full-screen phone menu, footer
 - [x] Lenis smooth scroll + reduced-motion fallback
-- [ ] Deploy to Vercel → first preview link *(needs our Vercel login — `docs/SETUP.md` §4)*
+- [x] Live preview on GitHub Pages → https://sydefxxs.github.io/wedding-website/ (auto-deploys on push)
+- [ ] Full site on Vercel (saved RSVPs, editor, custom domain) *(needs our Vercel login — `docs/SETUP.md` §4)*
 
 ## Phase 2 — CMS (make it editable) 🟡
 - [x] Embedded Studio at `/studio`, sidebar organized for us

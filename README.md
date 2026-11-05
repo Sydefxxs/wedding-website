@@ -2,7 +2,9 @@
 
 **April 24, 2027.** A custom, cinematic, fully editable wedding site — built to impress our guests and easy for us to update ourselves.
 
-> **Status:** Phases 0–4 built. Runs today on starter content + our engagement photos. Next: connect the Sanity editor and deploy (see [`docs/SETUP.md`](docs/SETUP.md)). Venue, hotel and wedding-party photos are still soft-blur placeholders.
+> **Status:** Phases 0–4 built. Runs today on starter content + our engagement photos. Venue, hotel and wedding-party photos are still soft-blur placeholders.
+>
+> **Live preview:** https://sydefxxs.github.io/wedding-website/ — rebuilt automatically on every push to `main`. It's a static preview: RSVP runs in demo mode (try “Test Guest”, nothing is saved) and the editor isn't included. The full site (saved RSVPs, `/studio`, custom domain) deploys to Vercel — see [`docs/SETUP.md`](docs/SETUP.md).
 
 ## What guests get
 
@@ -41,6 +43,7 @@ npm run dev            # site at :3000, editor at /studio
 npm run build          # production build
 npm run lint && npm run typecheck
 npm run add-photo -- <file.jpg> <name> [focusX focusY]   # add one of our photos (strips GPS)
+bash scripts/build-pages.sh   # static GitHub Pages preview → ./out (CI does this on push)
 npm run seed           # copy content + photos into Sanity
 npm run import-guests -- guests.csv [--commit]
 ```

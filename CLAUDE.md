@@ -8,6 +8,7 @@ Wedding website for **Arath & Ruby Garza — April 24, 2027**. Next.js 16 (App R
 - `lib/content.ts` → `getContent()` (cached, tag `content`) reads Sanity when `NEXT_PUBLIC_SANITY_PROJECT_ID` is set, otherwise the starter content in `content/placeholder.ts`. Missing Sanity fields fall back to the starter values.
 - Real photos: `public/photos/` + `content/photos.json` (add with `npm run add-photo`). Temporary stand-ins: `public/placeholders/` (flagged `placeholder: true`).
 - Sanity webhook → `app/api/revalidate` → `revalidateTag('content', 'max')`.
+- Two deploy targets: **GitHub Pages preview** (static export via `scripts/build-pages.sh`, run by `.github/workflows/pages.yml` on push — strips `app/api`, `app/studio`, swaps in `preview/rsvp-actions.demo.ts` and the PNGs in `preview/`) and the **full site on Vercel**. Any new server-only route or action must be handled in `build-pages.sh`, and local image paths must go through `Photo` (it adds the basePath).
 
 ## Always
 - Read `DESIGN.md` before touching UI. Use tokens (CSS vars / Tailwind theme), never raw hex or px values.
