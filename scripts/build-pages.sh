@@ -7,7 +7,7 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 
 export PAGES_BASE_PATH="${PAGES_BASE_PATH:-/wedding-website}"
-SERVER_ONLY=(app/api app/studio "app/(site)/rsvp/actions.ts" "app/(site)/icon.tsx" "app/(site)/opengraph-image.tsx")
+SERVER_ONLY=(app/api app/studio "app/(site)/rsvp/actions.ts" "app/(site)/photos/actions.ts" "app/(site)/icon.tsx" "app/(site)/opengraph-image.tsx")
 
 if [ "${CI:-}" != "true" ]; then
   # Local run: put the server-only files back afterwards
@@ -20,6 +20,7 @@ fi
 
 rm -rf app/api app/studio .next out
 cp preview/rsvp-actions.demo.ts "app/(site)/rsvp/actions.ts"
+cp preview/photos-actions.demo.ts "app/(site)/photos/actions.ts"
 # Generated images can't render on demand on a static host → use pre-made copies
 # (refresh them from the full site: preview/icon.png, preview/opengraph-image.png)
 rm -f "app/(site)/icon.tsx" "app/(site)/opengraph-image.tsx"

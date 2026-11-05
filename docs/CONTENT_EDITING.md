@@ -12,6 +12,8 @@ Once Phase 2 is live, everything is editable at **`yourdomain.com/studio`** — 
 | Add a hotel block | **Hotels** |
 | Answer a new FAQ | **FAQ** → New (drag to reorder) |
 | Add gallery photos | **Gallery** → drag & drop many at once |
+| Hide a guest photo | **Guest photos** → open it → tick **Hidden** |
+| Approve photos before they show / set an upload code / close uploads | **Site Settings → Guest photos** |
 | See who RSVP'd | **RSVPs** (export CSV from the top menu) |
 | Add a guest | **Guests** (or send Claude a CSV) |
 

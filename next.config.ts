@@ -11,7 +11,12 @@ const nextConfig: NextConfig = {
   // Static export can't use partial prerendering, so the Pages preview turns it off (and keeps 'use cache')
   cacheComponents: !isPages,
   partialPrefetching: !isPages,
-  ...(isPages ? { output: 'export' as const, basePath: pagesBase, trailingSlash: true, experimental: { useCache: true } } : {}),
+  ...(isPages ? { output: 'export' as const, basePath: pagesBase, trailingSlash: true } : {}),
+  experimental: {
+    ...(isPages ? { useCache: true } : {}),
+    // Guest photo uploads (already shrunk in the browser) — one photo per request
+    serverActions: { bodySizeLimit: '10mb' },
+  },
   env: { NEXT_PUBLIC_BASE_PATH: pagesBase ?? '' },
   // The link-preview image reads our photo + fonts from disk; make sure hosts bundle them with that route
   outputFileTracingIncludes: {

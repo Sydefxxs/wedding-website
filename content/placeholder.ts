@@ -48,6 +48,7 @@ export const placeholderContent: SiteContent = {
       { label: 'Schedule', href: '/schedule' },
       { label: 'Wedding Party', href: '/party' },
       { label: 'Gallery', href: '/gallery' },
+      { label: 'Share Photos', href: '/photos' },
       { label: 'Registry', href: '/registry' },
       { label: 'FAQ', href: '/faq' },
     ],

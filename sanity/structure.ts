@@ -12,6 +12,7 @@ export const structure: StructureResolver = (S) =>
       S.documentTypeListItem('galleryImage').title('Gallery'),
       S.documentTypeListItem('registryLink').title('Registry'),
       S.documentTypeListItem('faq').title('FAQ'),
+      S.documentTypeListItem('guestPhoto').title('Guest photos'),
       S.documentTypeListItem('page').title('Custom pages'),
       S.divider(),
       S.listItem()

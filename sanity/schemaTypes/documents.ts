@@ -17,6 +17,7 @@ export const siteSettings = defineType({
     { name: 'couple', title: 'Couple & date', default: true },
     { name: 'home', title: 'Home page' },
     { name: 'registry', title: 'Registry page' },
+    { name: 'photos', title: 'Guest photos' },
     { name: 'site', title: 'Menu & footer' },
   ],
   fields: [
@@ -42,6 +43,9 @@ export const siteSettings = defineType({
     defineField({ name: 'registryBody', type: 'text', rows: 3, group: 'registry' }),
     defineField({ name: 'registryImage', type: 'photo', group: 'registry' }),
 
+    defineField({ name: 'guestUploadsOpen', title: 'Guests can upload photos', type: 'boolean', group: 'photos', initialValue: true }),
+    defineField({ name: 'moderateGuestPhotos', title: 'Approve photos before they appear', type: 'boolean', group: 'photos', initialValue: false, description: 'When on, new uploads stay hidden until you untick "Hidden" on them.' }),
+    defineField({ name: 'guestUploadCode', title: 'Upload code (optional)', type: 'string', group: 'photos', description: 'If set, guests must type this code to upload — print it on table cards. Leave empty for no code.' }),
     defineField({ name: 'shareImage', title: 'Link preview photo', type: 'photo', group: 'site', description: 'Shown when the link is texted or posted. Our names and date are added on top automatically.' }),
     defineField({ name: 'photoCredit', title: 'Photo credit', type: 'string', group: 'site', description: 'e.g. "Engagement photos by Roy Esparza Photography" — shown on the Gallery page and footer.' }),
     defineField({ name: 'nav', title: 'Menu links', type: 'array', group: 'site', of: [defineArrayMember({ type: 'navLink' })] }),
@@ -139,6 +143,24 @@ export const galleryImage = defineType({
     order,
   ],
   preview: { select: { title: 'caption', media: 'image' }, prepare: (s) => ({ title: s.title || 'Photo', media: s.media }) },
+})
+
+export const guestPhoto = defineType({
+  name: 'guestPhoto',
+  title: 'Guest photo',
+  type: 'document',
+  fields: [
+    defineField({ name: 'image', type: 'image', validation: (r) => r.required() }),
+    defineField({ name: 'name', title: 'Shared by', type: 'string' }),
+    defineField({ name: 'caption', type: 'string' }),
+    defineField({ name: 'hidden', title: 'Hidden', type: 'boolean', initialValue: false, description: 'Tick to remove it from the website (it stays here).' }),
+    defineField({ name: 'uploadedAt', type: 'datetime', readOnly: true }),
+  ],
+  orderings: [{ title: 'Newest', name: 'newest', by: [{ field: 'uploadedAt', direction: 'desc' }] }],
+  preview: {
+    select: { title: 'name', subtitle: 'caption', media: 'image', hidden: 'hidden' },
+    prepare: (s) => ({ title: `${s.hidden ? '🚫 ' : ''}${s.title || 'Guest'}`, subtitle: s.subtitle, media: s.media }),
+  },
 })
 
 export const page = defineType({

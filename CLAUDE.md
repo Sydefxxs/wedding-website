@@ -22,7 +22,7 @@ Wedding website for **Arath & Ruby Garza — April 24, 2027**. Next.js 16 (App R
 - Keep `docs/ROADMAP.md` checkboxes up to date when a step is finished.
 
 ## Never
-- Expose the guest list to the client (lookups run in `app/(site)/rsvp/actions.ts`).
+- Expose the guest list to the client (lookups run in `app/(site)/rsvp/actions.ts`), or the photo upload code (checked in `app/(site)/photos/actions.ts`).
 - Invent facts: unknown details stay in `[brackets]`.
 - Add purple gradients, glassmorphism, gradient text, emoji icons, or three identical centered cards.
 - Copy another couple's photos, copy, or whole design.

@@ -42,6 +42,7 @@ wedding-website/
 | `galleryImage` | image, caption, orientation |
 | `registry` | name, URL, logo |
 | `guest` | full name, household, invited events[], plus-one allowed |
+| `guestPhoto` | image, shared by, caption, hidden, uploadedAt — uploaded from `/photos` |
 | `rsvp` | guest ref, per-event attending, meal, dietary, song, message, submittedAt |
 
 Because pages are a **section builder**, we can add, remove and reorder sections on any page from Studio without code.

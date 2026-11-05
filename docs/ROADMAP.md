@@ -55,6 +55,12 @@ Each phase ends with something we can open and react to. Agents/skills reference
 - [ ] Turn on saving to Sanity (happens automatically once Phase 2 is connected)
 - [ ] Optional: confirmation email (Resend) · "edit my RSVP" link · CSV export of responses
 
+## Phase 5b — Guest photo sharing 🟡
+- [x] `/photos`: guests upload from their phones (shrunk in the browser), shared grid, viewer, download one or all (zip)
+- [x] Editor controls: hide photos, approve-before-showing, optional upload code for table cards, open/close uploads
+- [ ] Saving uploads (needs Sanity + Vercel — `docs/SETUP.md`)
+- [ ] Print table cards with a QR code to `/photos` (+ the upload code if we use one)
+
 ## Phase 6 — Polish, privacy & launch
 - [x] City, venue, times, dress code, kids, parking, RSVP deadline, contact email
 - [ ] Remaining `[brackets]`: story, wedding party, registry
