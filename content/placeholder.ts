@@ -18,7 +18,6 @@ const img = (slot: Slot, alt: string): Img => ({ ...placeholders[slot], alt, pla
 /** One of our real photos */
 const photo = (name: PhotoName, alt: string): Img => ({ ...(photos[name] as Img), alt, placeholder: false })
 
-const CREDIT = 'Engagement photos by Roy Esparza Photography'
 
 export const placeholderContent: SiteContent = {
   settings: {
@@ -28,7 +27,7 @@ export const placeholderContent: SiteContent = {
     // Ceremony time is a sample — the date comes from our save-the-date
     date: '2027-04-24T16:30:00-05:00',
     dateLabel: 'April 24, 2027',
-    location: '[City, State]',
+    location: 'Brownsville, Tx',
     tagline: 'Together with our families, we invite you to celebrate with us.',
     heroImage: photo('engagement-dip-kiss', 'Arath dipping Ruby into a kiss between tall white columns'),
     shareImage: photo('engagement-save-the-date', 'Arath and Ruby on the steps holding a “Save the Date — 04.24.2027” sign'),
@@ -36,13 +35,13 @@ export const placeholderContent: SiteContent = {
     intro: {
       eyebrow: 'Welcome',
       heading: 'We’re getting married — and we want you there.',
-      body: 'We built this site so you have everything in one place: when to arrive, where to stay, what to wear, and a few stories about how we got here. Look around, RSVP when you’re ready, and text us if anything is unclear.',
+      body: 'We built this site so you have everything in one place: when to arrive, what to wear, and a guide on how we got here. Look around, RSVP when you’re ready, and text us if anything is unclear.',
       image: photo('engagement-cheek-kiss', 'Ruby wrapping her arms around Arath and kissing his cheek'),
     },
     rsvpDeadline: '2027-03-01T23:59:00-06:00',
     rsvpDeadlineLabel: '[March 1, 2027]',
     hashtag: '#ArathAndRuby',
-    contactEmail: 'hello@example.com',
+    contactEmail: 'thegarzas@gmail.com',
     nav: [
       { label: 'Our Story', href: '/story' },
       { label: 'Schedule', href: '/schedule' },
@@ -58,59 +57,47 @@ export const placeholderContent: SiteContent = {
   events: [
     {
       id: 'welcome',
-      name: 'Welcome Drinks',
+      name: 'Ceremony',
       start: '2027-04-23T19:00:00-05:00',
       end: '2027-04-23T22:00:00-05:00',
-      dayLabel: 'Friday, April 23',
-      timeLabel: '7:00 PM',
-      venue: '[Welcome venue]',
-      address: '[Street address, City]',
-      mapUrl: 'https://maps.google.com',
-      attire: 'Casual',
-      description: 'Come say hi, grab a drink, and meet the people you’ll be dancing with tomorrow. No speeches, we promise.',
+      dayLabel: 'Saturday, April 24',
+      timeLabel: '6:00 PM',
+      venue: 'Santa Fe Event Center',
+      address: '260 Mexico Blvd, Brownsville',
+      mapUrl: 'https://www.google.com/maps/place/290+Mexico+Blvd,+Brownsville,+TX+78520/@25.9000947,-97.5161681,17z/data=!3m1!4b1!4m6!3m5!1s0x866f9464aa2e96e1:0xd81232c2256e1dc8!8m2!3d25.9002701!4d-97.5133116!16s%2Fg%2F11x7hv013_?entry=ttu&g_ep=EgoyMDI2MTEwMi4wIKXMDSoASAFQAw%3D%3D',
+      attire: 'Formal',
+      description: 'Please arrive early so you can find your seat before we begin. NO CELLPHONES!!',
       image: img('venue-reception', 'Placeholder — welcome drinks venue'),
     },
     {
       id: 'ceremony',
-      name: 'Ceremony',
+      name: 'Dinner',
       start: '2027-04-24T16:30:00-05:00',
       end: '2027-04-24T17:15:00-05:00',
       dayLabel: 'Saturday, April 24',
-      timeLabel: '4:30 PM',
-      venue: '[Ceremony venue]',
-      address: '[Street address, City]',
-      mapUrl: 'https://maps.google.com',
-      attire: '[Dress code]',
-      description: 'Please arrive 30 minutes early so you can find your seat before we begin.',
+      timeLabel: '7:00 PM',
+      venue: 'Santa Fe Event Center',
+      address: '260 Mexico Blvd, Brownsville',
+      mapUrl: 'https://www.google.com/maps/place/290+Mexico+Blvd,+Brownsville,+TX+78520/@25.9000947,-97.5161681,17z/data=!3m1!4b1!4m6!3m5!1s0x866f9464aa2e96e1:0xd81232c2256e1dc8!8m2!3d25.9002701!4d-97.5133116!16s%2Fg%2F11x7hv013_?entry=ttu&g_ep=EgoyMDI2MTEwMi4wIKXMDSoASAFQAw%3D%3D',
+      attire: 'Formal',
+      description: 'Come and Join us. Dinner is on us.',
       image: img('venue-ceremony', 'Placeholder — ceremony venue'),
     },
     {
       id: 'reception',
-      name: 'Dinner & Dancing',
+      name: 'Party Time',
       start: '2027-04-24T18:00:00-05:00',
       end: '2027-04-24T23:30:00-05:00',
       dayLabel: 'Saturday, April 24',
-      timeLabel: '6:00 PM',
+      timeLabel: '8:00 PM',
       venue: '[Reception venue]',
-      address: '[Street address, City]',
-      mapUrl: 'https://maps.google.com',
-      attire: '[Dress code]',
+      address: '260 mexico Blvd, Brownsville',
+      mapUrl: 'https://www.google.com/maps/place/290+Mexico+Blvd,+Brownsville,+TX+78520/@25.9000947,-97.5161681,17z/data=!3m1!4b1!4m6!3m5!1s0x866f9464aa2e96e1:0xd81232c2256e1dc8!8m2!3d25.9002701!4d-97.5133116!16s%2Fg%2F11x7hv013_?entry=ttu&g_ep=EgoyMDI2MTEwMi4wIKXMDSoASAFQAw%3D%3D',
+      attire: 'Formal',
       description: 'Cocktail hour, dinner, and a dance floor that we fully expect you to use.',
       image: img('venue-reception', 'Placeholder — reception venue'),
     },
-    {
-      id: 'brunch',
-      name: 'Farewell Brunch',
-      start: '2027-04-25T10:00:00-05:00',
-      end: '2027-04-25T12:00:00-05:00',
-      dayLabel: 'Sunday, April 25',
-      timeLabel: '10:00 AM',
-      venue: '[Brunch venue]',
-      address: '[Street address, City]',
-      mapUrl: 'https://maps.google.com',
-      attire: 'Come as you are',
-      description: 'Coffee, chilaquiles, and one last hug before everyone heads home.',
-    },
+    
   ],
 
   story: [
@@ -126,9 +113,6 @@ export const placeholderContent: SiteContent = {
     heading: 'Getting here',
     body: 'Here’s everything you need to plan the trip. If you’re flying, book early — spring weekends fill up fast.',
     image: img('travel-city', 'Placeholder — the city'),
-    airports: [
-      { code: '[AAA]', name: '[Closest airport]', drive: '[25 min] to the venue' },
-      { code: '[BBB]', name: '[Larger airport]', drive: '[1 hr 20 min] to the venue' },
     ],
     tips: [
       { title: 'Getting around', body: '[Rideshare, rental car, or shuttle details. Parking at the venue?]' },
@@ -136,12 +120,6 @@ export const placeholderContent: SiteContent = {
       { title: 'While you’re here', body: '[Our favorite restaurants, the beach, the best tacos in town.]' },
     ],
   },
-
-  hotels: [
-    { id: 'h1', name: '[Hotel One]', distance: '[5 min] from venue', price: '[$189]/night', bookingUrl: 'https://example.com', code: '[ARATHRUBY]', deadline: 'Book by [March 24, 2027]', note: '[Shuttle to the venue]', image: img('hotel-01', 'Placeholder — hotel one') },
-    { id: 'h2', name: '[Hotel Two]', distance: '[12 min] from venue', price: '[$149]/night', bookingUrl: 'https://example.com', code: '[GARZA27]', deadline: 'Book by [March 24, 2027]', image: img('hotel-02', 'Placeholder — hotel two') },
-    { id: 'h3', name: '[Boutique Inn]', distance: '[Walking distance]', price: '[$240]/night', bookingUrl: 'https://example.com', note: 'Small — book early', image: img('hotel-03', 'Placeholder — boutique inn') },
-  ],
 
   people: [
     { id: 'p1', name: '[Name]', role: 'Maid of Honor', note: '[One line about them]', image: img('party-01', 'Placeholder — maid of honor') },
@@ -155,14 +133,14 @@ export const placeholderContent: SiteContent = {
   ],
 
   faqs: [
-    { id: 'f1', question: 'When should I RSVP by?', answer: 'Please RSVP by [March 1, 2027] so we can give final numbers to our caterer. You can change your answer any time before then.' },
-    { id: 'f2', question: 'What should I wear?', answer: '[Dress code — e.g. formal: suits or tuxes, long or cocktail dresses.]' },
+    { id: 'f1', question: 'When should I RSVP by?', answer: 'Please RSVP by March 1, 2027 so we can give final numbers to our caterer.' },
+    { id: 'f2', question: 'What should I wear?', answer: 'Dress code — e.g. formal: suits or tuxes, long or cocktail dresses.' },
     { id: 'f3', question: 'Can I bring a date?', answer: 'Your invitation lists everyone we’ve saved a seat for. When you RSVP, you’ll see exactly who’s included.' },
-    { id: 'f4', question: 'Are kids welcome?', answer: '[Decide: kids welcome / adults-only reception / immediate family only.]' },
-    { id: 'f5', question: 'Is there parking?', answer: '[Parking details — free on-site lot, valet, or take the shuttle from the hotel block.]' },
-    { id: 'f6', question: 'Will the ceremony be unplugged?', answer: '[Yes/No — e.g. please keep phones away during the ceremony; our photographer has it covered and we’ll share everything after.]' },
+    { id: 'f4', question: 'Are kids welcome?', answer: 'Kids are more than welcome!We just kindly ask that parents keep their children supervised throughout the evening.' },
+    { id: 'f5', question: 'Is there parking?', answer: 'Yes' },
+    { id: 'f6', question: 'Will the ceremony be unplugged?', answer: 'Yes, please keep phones away during the ceremony; our photographer has it covered and we’ll share everything after.' },
     { id: 'f7', question: 'I have a dietary restriction.', answer: 'Tell us on the RSVP form and we’ll make sure you’re taken care of.' },
-    { id: 'f8', question: 'Who do I contact with questions?', answer: 'Text either of us, or email hello@example.com.' },
+    { id: 'f8', question: 'Who do I contact with questions?', answer: 'Text either of us, or email thegarzas@gmail.com and will get back to you as soon as we can.' },
   ],
 
   registry: {
@@ -171,7 +149,7 @@ export const placeholderContent: SiteContent = {
     image: photo('engagement-ring-embrace', 'Ruby’s hand with her engagement ring resting on the back of Arath’s neck as they embrace'),
     links: [
       { id: 'r1', name: 'Honeymoon Fund', url: 'https://example.com', note: 'Help us get to [destination]' },
-      { id: 'r2', name: '[Store registry]', url: 'https://example.com', note: 'For our first home' },
+      { id: 'r2', name: 'Amazon Registry', url: 'https://example.com', note: 'For our first home' },
       { id: 'r3', name: '[Second registry]', url: 'https://example.com' },
     ],
   },
