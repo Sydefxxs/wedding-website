@@ -142,13 +142,13 @@ export function RsvpForm({ deadlineLabel }: { deadlineLabel: string }) {
           <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gold text-primary-ink"><Check size={28} weight="light" /></span>
           <h2 className="mt-8 text-h1">{anyYes ? 'We can’t wait to see you!' : 'We’ll miss you.'}</h2>
           <p className="text-lead mx-auto mt-5 max-w-md text-ink-2">
-            {anyYes ? 'Your RSVP is in. Add the events to your calendar and take a look at travel and hotels.' : 'Thank you for letting us know — you’ll be with us in spirit.'}
+            {anyYes ? 'Your RSVP is in. Add the events to your calendar — see you April 24!' : 'Thank you for letting us know — you’ll be with us in spirit.'}
           </p>
           {demo && <p className="mt-6 text-sm text-warning">Demo mode: nothing was saved yet. RSVPs save to the Studio once Sanity is connected.</p>}
           {anyYes && (
             <div className="mt-10 flex flex-wrap justify-center gap-4">
               <Link href="/schedule" className="eyebrow link-draw">Schedule & calendar</Link>
-              <Link href="/travel" className="eyebrow link-draw">Travel & hotels</Link>
+              <Link href="/faq" className="eyebrow link-draw">FAQ</Link>
             </div>
           )}
         </div>

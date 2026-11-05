@@ -10,10 +10,9 @@
 
 | Page | What's there |
 |---|---|
-| **Home** | Our photo + names, live countdown, the weekend at a glance, story collage, a gallery strip that glides sideways as you scroll, travel teaser |
+| **Home** | Our photo + names, live countdown, the weekend at a glance, story collage, a gallery strip that glides sideways as you scroll, the venue with directions |
 | **Our Story** | Timeline where a thread draws down the page, photos drift in parallax |
 | **Schedule** | Every event with time, place, attire, directions, and add-to-calendar (Google / Apple / Outlook) |
-| **Travel & Stay** | Airports, hotel blocks with codes and booking links, local tips |
 | **Wedding Party** | Portrait grid |
 | **Gallery** | Masonry grid + full-screen viewer (swipe, arrow keys, Esc) |
 | **Registry** | Links to our registries / honeymoon fund |

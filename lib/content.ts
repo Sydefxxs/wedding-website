@@ -9,11 +9,10 @@ const IMG = `{ alt, placeholder, hotspot, "asset": asset->{ url, metadata { lqip
 
 const CONTENT_QUERY = defineQuery(`{
   "settings": *[_id == "siteSettings"][0]{
-    ..., heroImage${IMG}, shareImage${IMG}, introImage${IMG}, travelImage${IMG}, registryImage${IMG}
+    ..., heroImage${IMG}, shareImage${IMG}, introImage${IMG}, registryImage${IMG}
   },
   "events": *[_type == "event"] | order(start asc){ "id": _id, name, start, end, dayLabel, timeLabel, venue, address, mapUrl, attire, description, image${IMG} },
   "story": *[_type == "storyMoment"] | order(order asc){ "id": _id, dateLabel, title, body, image${IMG} },
-  "hotels": *[_type == "hotel"] | order(order asc){ "id": _id, name, distance, price, bookingUrl, code, deadline, note, image${IMG} },
   "people": *[_type == "person"] | order(order asc){ "id": _id, name, role, note, image${IMG} },
   "faqs": *[_type == "faq"] | order(order asc){ "id": _id, question, answer },
   "registry": *[_type == "registryLink"] | order(order asc){ "id": _id, name, url, note },
@@ -92,15 +91,6 @@ export async function getContent(): Promise<SiteContent> {
     })),
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     story: (d.story ?? []).map((m: any, i: number) => ({ ...m, image: toImg(m.image, rotate(P.story, i).image) })),
-    travel: {
-      heading: pick(s.travelHeading, P.travel.heading),
-      body: pick(s.travelBody, P.travel.body),
-      image: toImg(s.travelImage, P.travel.image),
-      airports: s.airports?.length ? s.airports : P.travel.airports,
-      tips: s.tips?.length ? s.tips : P.travel.tips,
-    },
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    hotels: (d.hotels ?? []).map((h: any, i: number) => ({ ...h, image: toImg(h.image, rotate(P.hotels, i).image) })),
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     people: (d.people ?? []).map((p: any, i: number) => ({ ...p, image: toImg(p.image, rotate(P.people, i).image) })),
     faqs: d.faqs ?? [],

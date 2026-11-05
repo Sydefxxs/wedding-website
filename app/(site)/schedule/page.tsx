@@ -16,7 +16,7 @@ export default async function SchedulePage() {
 
   return (
     <>
-      <PageHeader eyebrow="Schedule" title="The weekend" lead="Everything we have planned, with times, places and what to wear. Add any event straight to your calendar." />
+      <PageHeader eyebrow="Schedule" title="The big day" lead="Everything we have planned, with times, places and what to wear. Add any event straight to your calendar." />
       <div className="container-x pb-24 md:pb-40">
         {days.map((day) => (
           <section key={day} className="mb-24 last:mb-0 md:mb-32" aria-labelledby={`day-${day}`}>

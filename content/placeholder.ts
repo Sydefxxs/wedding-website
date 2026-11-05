@@ -1,7 +1,7 @@
 /**
  * STARTER CONTENT — Arath & Ruby Garza · April 24, 2027
  * Shown until Sanity is connected (see docs/SETUP.md); after that, edit everything from /studio.
- * Anything in [brackets] is a fact we still need to fill in. Event times are samples.
+ * Anything in [brackets] is a fact we still need to fill in.
  * Real photos live in public/photos (add more with scripts/add-photo.mjs);
  * the soft-blur images in public/placeholders are temporary stand-ins.
  */
@@ -18,16 +18,17 @@ const img = (slot: Slot, alt: string): Img => ({ ...placeholders[slot], alt, pla
 /** One of our real photos */
 const photo = (name: PhotoName, alt: string): Img => ({ ...(photos[name] as Img), alt, placeholder: false })
 
+const CREDIT = 'Engagement photos by Roy Esparza Photography'
 
 export const placeholderContent: SiteContent = {
   settings: {
     partnerOne: 'Arath',
     partnerTwo: 'Ruby',
     lastName: 'Garza',
-    // Ceremony time is a sample — the date comes from our save-the-date
-    date: '2027-04-24T16:30:00-05:00',
+    // Ceremony start — drives the countdown
+    date: '2027-04-24T18:00:00-05:00',
     dateLabel: 'April 24, 2027',
-    location: 'Brownsville, Tx',
+    location: 'Brownsville, TX',
     tagline: 'Together with our families, we invite you to celebrate with us.',
     heroImage: photo('engagement-dip-kiss', 'Arath dipping Ruby into a kiss between tall white columns'),
     shareImage: photo('engagement-save-the-date', 'Arath and Ruby on the steps holding a “Save the Date — 04.24.2027” sign'),
@@ -39,13 +40,12 @@ export const placeholderContent: SiteContent = {
       image: photo('engagement-cheek-kiss', 'Ruby wrapping her arms around Arath and kissing his cheek'),
     },
     rsvpDeadline: '2027-03-01T23:59:00-06:00',
-    rsvpDeadlineLabel: '[March 1, 2027]',
+    rsvpDeadlineLabel: 'March 1, 2027',
     hashtag: '#ArathAndRuby',
     contactEmail: 'thegarzas@gmail.com',
     nav: [
       { label: 'Our Story', href: '/story' },
       { label: 'Schedule', href: '/schedule' },
-      { label: 'Travel', href: '/travel' },
       { label: 'Wedding Party', href: '/party' },
       { label: 'Gallery', href: '/gallery' },
       { label: 'Registry', href: '/registry' },
@@ -54,50 +54,47 @@ export const placeholderContent: SiteContent = {
     footerNote: 'Made with love, for the people we love.',
   },
 
+  // All three are at Santa Fe Event Center, Saturday April 24
   events: [
     {
-      id: 'welcome',
+      id: 'ceremony',
       name: 'Ceremony',
-      start: '2027-04-23T19:00:00-05:00',
-      end: '2027-04-23T22:00:00-05:00',
+      start: '2027-04-24T18:00:00-05:00',
+      end: '2027-04-24T19:00:00-05:00',
       dayLabel: 'Saturday, April 24',
       timeLabel: '6:00 PM',
       venue: 'Santa Fe Event Center',
-      address: '260 Mexico Blvd, Brownsville',
+      address: '260 Mexico Blvd, Brownsville, TX',
       mapUrl: 'https://www.google.com/maps/place/290+Mexico+Blvd,+Brownsville,+TX+78520/@25.9000947,-97.5161681,17z/data=!3m1!4b1!4m6!3m5!1s0x866f9464aa2e96e1:0xd81232c2256e1dc8!8m2!3d25.9002701!4d-97.5133116!16s%2Fg%2F11x7hv013_?entry=ttu&g_ep=EgoyMDI2MTEwMi4wIKXMDSoASAFQAw%3D%3D',
       attire: 'Formal',
-      description: 'Please arrive early so you can find your seat before we begin. NO CELLPHONES!!',
-      image: img('venue-reception', 'Placeholder — welcome drinks venue'),
+      description: 'Please arrive early so you can find your seat before we begin. This is an unplugged ceremony — no cellphones, please!',
+      image: img('venue-ceremony', 'Placeholder — Santa Fe Event Center'),
     },
     {
-      id: 'ceremony',
+      id: 'dinner',
       name: 'Dinner',
-      start: '2027-04-24T16:30:00-05:00',
-      end: '2027-04-24T17:15:00-05:00',
+      start: '2027-04-24T19:00:00-05:00',
+      end: '2027-04-24T20:00:00-05:00',
       dayLabel: 'Saturday, April 24',
       timeLabel: '7:00 PM',
       venue: 'Santa Fe Event Center',
-      address: '260 Mexico Blvd, Brownsville',
+      address: '260 Mexico Blvd, Brownsville, TX',
       mapUrl: 'https://www.google.com/maps/place/290+Mexico+Blvd,+Brownsville,+TX+78520/@25.9000947,-97.5161681,17z/data=!3m1!4b1!4m6!3m5!1s0x866f9464aa2e96e1:0xd81232c2256e1dc8!8m2!3d25.9002701!4d-97.5133116!16s%2Fg%2F11x7hv013_?entry=ttu&g_ep=EgoyMDI2MTEwMi4wIKXMDSoASAFQAw%3D%3D',
       attire: 'Formal',
-      description: 'Come and Join us. Dinner is on us.',
-      image: img('venue-ceremony', 'Placeholder — ceremony venue'),
+      description: 'Come and join us — dinner is on us.',
     },
     {
-      id: 'reception',
+      id: 'party',
       name: 'Party Time',
-      start: '2027-04-24T18:00:00-05:00',
-      end: '2027-04-24T23:30:00-05:00',
+      start: '2027-04-24T20:00:00-05:00',
       dayLabel: 'Saturday, April 24',
       timeLabel: '8:00 PM',
-      venue: '[Reception venue]',
-      address: '260 mexico Blvd, Brownsville',
+      venue: 'Santa Fe Event Center',
+      address: '260 Mexico Blvd, Brownsville, TX',
       mapUrl: 'https://www.google.com/maps/place/290+Mexico+Blvd,+Brownsville,+TX+78520/@25.9000947,-97.5161681,17z/data=!3m1!4b1!4m6!3m5!1s0x866f9464aa2e96e1:0xd81232c2256e1dc8!8m2!3d25.9002701!4d-97.5133116!16s%2Fg%2F11x7hv013_?entry=ttu&g_ep=EgoyMDI2MTEwMi4wIKXMDSoASAFQAw%3D%3D',
       attire: 'Formal',
-      description: 'Cocktail hour, dinner, and a dance floor that we fully expect you to use.',
-      image: img('venue-reception', 'Placeholder — reception venue'),
+      description: 'Music, dancing, and a dance floor that we fully expect you to use.',
     },
-    
   ],
 
   story: [
@@ -108,18 +105,6 @@ export const placeholderContent: SiteContent = {
     { id: 's5', dateLabel: '[Month, Year]', title: 'Yes, forever', body: '[What happened next — who we told first, how we celebrated.]', image: photo('proposal-lift', 'Arath lifting Ruby for a kiss under a white arch and marquee lights') },
     { id: 's6', dateLabel: 'April 24, 2027', title: 'Save the date', body: 'And this is where you come in. We can’t wait to celebrate with you.', image: photo('engagement-save-the-date', 'Arath and Ruby on the steps holding a “Save the Date — 04.24.2027” sign') },
   ],
-
-  travel: {
-    heading: 'Getting here',
-    body: 'Here’s everything you need to plan the trip. If you’re flying, book early — spring weekends fill up fast.',
-    image: img('travel-city', 'Placeholder — the city'),
-    ],
-    tips: [
-      { title: 'Getting around', body: '[Rideshare, rental car, or shuttle details. Parking at the venue?]' },
-      { title: 'Weather', body: '[Typical late-April weather — warm days, breezy evenings? Bring a layer.]' },
-      { title: 'While you’re here', body: '[Our favorite restaurants, the beach, the best tacos in town.]' },
-    ],
-  },
 
   people: [
     { id: 'p1', name: '[Name]', role: 'Maid of Honor', note: '[One line about them]', image: img('party-01', 'Placeholder — maid of honor') },
@@ -134,13 +119,13 @@ export const placeholderContent: SiteContent = {
 
   faqs: [
     { id: 'f1', question: 'When should I RSVP by?', answer: 'Please RSVP by March 1, 2027 so we can give final numbers to our caterer.' },
-    { id: 'f2', question: 'What should I wear?', answer: 'Dress code — e.g. formal: suits or tuxes, long or cocktail dresses.' },
+    { id: 'f2', question: 'What should I wear?', answer: 'Formal: suits or tuxes, long or cocktail dresses.' },
     { id: 'f3', question: 'Can I bring a date?', answer: 'Your invitation lists everyone we’ve saved a seat for. When you RSVP, you’ll see exactly who’s included.' },
-    { id: 'f4', question: 'Are kids welcome?', answer: 'Kids are more than welcome!We just kindly ask that parents keep their children supervised throughout the evening.' },
-    { id: 'f5', question: 'Is there parking?', answer: 'Yes' },
+    { id: 'f4', question: 'Are kids welcome?', answer: 'Kids are more than welcome! We just kindly ask that parents keep their children supervised throughout the evening.' },
+    { id: 'f5', question: 'Is there parking?', answer: 'Yes, there’s parking at Santa Fe Event Center.' },
     { id: 'f6', question: 'Will the ceremony be unplugged?', answer: 'Yes, please keep phones away during the ceremony; our photographer has it covered and we’ll share everything after.' },
     { id: 'f7', question: 'I have a dietary restriction.', answer: 'Tell us on the RSVP form and we’ll make sure you’re taken care of.' },
-    { id: 'f8', question: 'Who do I contact with questions?', answer: 'Text either of us, or email thegarzas@gmail.com and will get back to you as soon as we can.' },
+    { id: 'f8', question: 'Who do I contact with questions?', answer: 'Text either of us, or email thegarzas@gmail.com and we’ll get back to you as soon as we can.' },
   ],
 
   registry: {
@@ -150,7 +135,6 @@ export const placeholderContent: SiteContent = {
     links: [
       { id: 'r1', name: 'Honeymoon Fund', url: 'https://example.com', note: 'Help us get to [destination]' },
       { id: 'r2', name: 'Amazon Registry', url: 'https://example.com', note: 'For our first home' },
-      { id: 'r3', name: '[Second registry]', url: 'https://example.com' },
     ],
   },
 
@@ -186,7 +170,7 @@ export const placeholderContent: SiteContent = {
 
 /** Demo guest list used only when Sanity isn't connected. Server-only. */
 export const placeholderGuests = [
-  { id: 'g1', household: 'The Lopez Family', members: ['Ana Lopez', 'Luis Lopez'], events: ['welcome', 'ceremony', 'reception', 'brunch'] },
-  { id: 'g2', household: 'Jordan Lee & Guest', members: ['Jordan Lee', 'Guest'], events: ['ceremony', 'reception'] },
-  { id: 'g3', household: 'Test Guest', members: ['Test Guest'], events: ['welcome', 'ceremony', 'reception', 'brunch'] },
+  { id: 'g1', household: 'The Lopez Family', members: ['Ana Lopez', 'Luis Lopez'], events: ['ceremony', 'dinner', 'party'] },
+  { id: 'g2', household: 'Jordan Lee & Guest', members: ['Jordan Lee', 'Guest'], events: ['ceremony', 'dinner', 'party'] },
+  { id: 'g3', household: 'Test Guest', members: ['Test Guest'], events: ['ceremony', 'dinner', 'party'] },
 ]

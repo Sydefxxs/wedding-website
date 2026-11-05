@@ -52,26 +52,6 @@ export type WeddingEvent = {
 
 export type StoryMoment = { id: string; dateLabel: string; title: string; body: string; image: Img }
 
-export type Hotel = {
-  id: string
-  name: string
-  distance: string
-  price: string
-  bookingUrl?: string
-  code?: string
-  deadline?: string
-  note?: string
-  image: Img
-}
-
-export type TravelInfo = {
-  heading: string
-  body: string
-  image: Img
-  airports: { code: string; name: string; drive: string }[]
-  tips: { title: string; body: string }[]
-}
-
 export type Person = { id: string; name: string; role: string; note: string; image: Img }
 
 export type Faq = { id: string; question: string; answer: string }
@@ -91,8 +71,6 @@ export type SiteContent = {
   settings: SiteSettings
   events: WeddingEvent[]
   story: StoryMoment[]
-  travel: TravelInfo
-  hotels: Hotel[]
   people: Person[]
   faqs: Faq[]
   registry: { heading: string; body: string; image: Img; links: Registry[] }

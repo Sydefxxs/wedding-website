@@ -10,7 +10,7 @@ export function WeekendList({ events }: { events: WeddingEvent[] }) {
       <div className="container-x">
         <div className="mb-14 flex flex-wrap items-end justify-between gap-6 md:mb-20">
           <Reveal>
-            <p className="eyebrow mb-4 text-accent">The weekend</p>
+            <p className="eyebrow mb-4 text-accent">The big day</p>
             <h2 className="text-h1">Where to be, <em className="font-light text-rose">and when.</em></h2>
           </Reveal>
           <Reveal delay={150}><Link href="/schedule" className="eyebrow link-draw">Full schedule</Link></Reveal>

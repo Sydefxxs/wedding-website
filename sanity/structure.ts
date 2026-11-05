@@ -8,7 +8,6 @@ export const structure: StructureResolver = (S) =>
       S.divider(),
       S.documentTypeListItem('event').title('Schedule'),
       S.documentTypeListItem('storyMoment').title('Our Story'),
-      S.documentTypeListItem('hotel').title('Hotels'),
       S.documentTypeListItem('person').title('Wedding Party'),
       S.documentTypeListItem('galleryImage').title('Gallery'),
       S.documentTypeListItem('registryLink').title('Registry'),
@@ -32,7 +31,7 @@ export const structure: StructureResolver = (S) =>
           S.documentList()
             .title('Documents with placeholder photos')
             .filter(
-              'image.placeholder == true || heroImage.placeholder == true || shareImage.placeholder == true || introImage.placeholder == true || travelImage.placeholder == true || registryImage.placeholder == true || count(sections[image.placeholder == true]) > 0',
+              'image.placeholder == true || heroImage.placeholder == true || shareImage.placeholder == true || introImage.placeholder == true || registryImage.placeholder == true || count(sections[image.placeholder == true]) > 0',
             ),
         ),
     ])

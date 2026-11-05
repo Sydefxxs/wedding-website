@@ -4,7 +4,7 @@ import { Intro } from '@/components/sections/Intro'
 import { WeekendList } from '@/components/sections/WeekendList'
 import { StoryTeaser } from '@/components/sections/StoryTeaser'
 import { GalleryStrip } from '@/components/sections/GalleryStrip'
-import { TravelTeaser } from '@/components/sections/TravelTeaser'
+import { VenueTeaser } from '@/components/sections/VenueTeaser'
 
 export default async function Home() {
   const c = await getContent()
@@ -15,7 +15,7 @@ export default async function Home() {
       <WeekendList events={c.events} />
       <StoryTeaser story={c.story} />
       <GalleryStrip images={c.gallery} />
-      <TravelTeaser travel={c.travel} hotels={c.hotels} />
+      <VenueTeaser events={c.events} />
     </>
   )
 }

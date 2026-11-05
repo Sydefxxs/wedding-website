@@ -34,7 +34,7 @@ Each phase ends with something we can open and react to. Agents/skills reference
 - [x] Home — hero, countdown, intro, the weekend, story collage, gallery strip, travel teaser
 - [x] Our Story — timeline
 - [x] Schedule — event cards, directions, add-to-calendar (Google / .ics)
-- [x] Travel & Stay — airports, hotel blocks, tips
+- [x] Venue card with directions (travel & hotels removed — most guests are local)
 - [x] Wedding Party · Gallery (+ viewer) · Registry · FAQ
 - [x] Custom pages (example: `/things-to-do`)
 - [x] Link-preview card with our save-the-date photo; favicon from our initials
@@ -56,8 +56,9 @@ Each phase ends with something we can open and react to. Agents/skills reference
 - [ ] Optional: confirmation email (Resend) · "edit my RSVP" link · CSV export of responses
 
 ## Phase 6 — Polish, privacy & launch
-- [ ] Fill every `[bracket]`: city, venues, times, dress code, hotels, registry links, RSVP deadline
-- [ ] Remaining photos: venues, travel, hotels, wedding party (`swap-placeholder-image` skill)
+- [x] City, venue, times, dress code, kids, parking, RSVP deadline, contact email
+- [ ] Remaining `[brackets]`: story, wedding party, registry
+- [ ] Remaining photos: venue, wedding party (`swap-placeholder-image` skill)
 - [ ] Ask Roy Esparza for web-size files (and OK to post with credit)
 - [ ] Optional site password
 - [ ] Accessibility + Lighthouse pass (`qa-reviewer` agent, `launch-checklist` skill)
@@ -67,8 +68,9 @@ Each phase ends with something we can open and react to. Agents/skills reference
 ---
 
 ## Still needed from us
-- City + venue(s) for each event, and real times
-- Dress code, kids policy, parking
-- Hotel blocks, registry links, RSVP deadline
-- Wedding party names + photos
-- Domain name idea (e.g. `arathandruby.com`)
+- Our Story: the text and dates for each moment
+- Wedding party: names, roles, one line each, photos
+- Registry: real Amazon link, honeymoon destination + fund link
+- Photo of Santa Fe Event Center
+- Confirm the address (260 vs 290 Mexico Blvd) and that thegarzas@gmail.com is real
+- When the party ends (for calendar invites)

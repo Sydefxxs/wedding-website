@@ -16,7 +16,6 @@ export const siteSettings = defineType({
   groups: [
     { name: 'couple', title: 'Couple & date', default: true },
     { name: 'home', title: 'Home page' },
-    { name: 'travel', title: 'Travel page' },
     { name: 'registry', title: 'Registry page' },
     { name: 'site', title: 'Menu & footer' },
   ],
@@ -38,25 +37,6 @@ export const siteSettings = defineType({
     defineField({ name: 'introHeading', title: 'Intro heading', type: 'string', group: 'home' }),
     defineField({ name: 'introBody', title: 'Intro text', type: 'text', rows: 4, group: 'home' }),
     defineField({ name: 'introImage', title: 'Intro photo', type: 'photo', group: 'home' }),
-
-    defineField({ name: 'travelHeading', type: 'string', group: 'travel' }),
-    defineField({ name: 'travelBody', type: 'text', rows: 3, group: 'travel' }),
-    defineField({ name: 'travelImage', type: 'photo', group: 'travel' }),
-    defineField({
-      name: 'airports', type: 'array', group: 'travel',
-      of: [defineArrayMember({ type: 'object', fields: [
-        defineField({ name: 'code', type: 'string' }),
-        defineField({ name: 'name', type: 'string' }),
-        defineField({ name: 'drive', title: 'Drive time', type: 'string' }),
-      ] })],
-    }),
-    defineField({
-      name: 'tips', title: 'Travel tips', type: 'array', group: 'travel',
-      of: [defineArrayMember({ type: 'object', fields: [
-        defineField({ name: 'title', type: 'string' }),
-        defineField({ name: 'body', type: 'text', rows: 3 }),
-      ] })],
-    }),
 
     defineField({ name: 'registryHeading', type: 'string', group: 'registry' }),
     defineField({ name: 'registryBody', type: 'text', rows: 3, group: 'registry' }),
@@ -104,24 +84,6 @@ export const storyMoment = defineType({
   ],
   orderings: [{ title: 'Order', name: 'order', by: [{ field: 'order', direction: 'asc' }] }],
   preview: { select: { title: 'title', subtitle: 'dateLabel', media: 'image' } },
-})
-
-export const hotel = defineType({
-  name: 'hotel',
-  title: 'Hotel',
-  type: 'document',
-  fields: [
-    defineField({ name: 'name', type: 'string', validation: (r) => r.required() }),
-    defineField({ name: 'distance', type: 'string' }),
-    defineField({ name: 'price', type: 'string' }),
-    defineField({ name: 'bookingUrl', title: 'Booking link', type: 'url' }),
-    defineField({ name: 'code', title: 'Group code', type: 'string' }),
-    defineField({ name: 'deadline', title: 'Booking deadline', type: 'string' }),
-    defineField({ name: 'note', type: 'string' }),
-    defineField({ name: 'image', type: 'photo' }),
-    order,
-  ],
-  preview: { select: { title: 'name', subtitle: 'distance', media: 'image' } },
 })
 
 export const person = defineType({

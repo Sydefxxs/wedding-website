@@ -87,11 +87,6 @@ async function main() {
     introHeading: s.intro.heading,
     introBody: s.intro.body,
     introImage: await photo(s.intro.image),
-    travelHeading: C.travel.heading,
-    travelBody: C.travel.body,
-    travelImage: await photo(C.travel.image),
-    airports: C.travel.airports.map((a, i) => ({ _key: key(i), ...a })),
-    tips: C.travel.tips.map((t, i) => ({ _key: key(i), ...t })),
     registryHeading: C.registry.heading,
     registryBody: C.registry.body,
     registryImage: await photo(C.registry.image),
@@ -107,9 +102,6 @@ async function main() {
   }
   for (const [i, m] of C.story.entries()) {
     docs.push({ _id: `story-${m.id}`, _type: 'storyMoment', dateLabel: m.dateLabel, title: m.title, body: m.body, image: await photo(m.image), order: (i + 1) * 10 })
-  }
-  for (const [i, h] of C.hotels.entries()) {
-    docs.push({ _id: `hotel-${h.id}`, _type: 'hotel', name: h.name, distance: h.distance, price: h.price, bookingUrl: h.bookingUrl, code: h.code, deadline: h.deadline, note: h.note, image: await photo(h.image), order: (i + 1) * 10 })
   }
   for (const [i, p] of C.people.entries()) {
     docs.push({ _id: `person-${p.id}`, _type: 'person', name: p.name, role: p.role, note: p.note, image: await photo(p.image), order: (i + 1) * 10 })
