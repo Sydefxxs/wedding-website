@@ -12,10 +12,13 @@ type Props = {
   imgClassName?: string
 }
 
+// next/image doesn't add basePath to string srcs (needed for the GitHub Pages preview)
+const withBase = (src: string) => (src.startsWith('/') ? `${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}${src}` : src)
+
 /** Every photo on the site goes through here: blur-up, hotspot cropping, responsive sizes. */
 export function Photo({ image, sizes, className, priority, fill = true, imgClassName }: Props) {
   const common = {
-    src: image.src,
+    src: withBase(image.src),
     alt: image.alt,
     sizes,
     priority,

@@ -1,4 +1,5 @@
 import { ImageResponse } from 'next/og'
+import { cacheLife, cacheTag } from 'next/cache'
 import { readFile } from 'node:fs/promises'
 import { join } from 'node:path'
 import sharp from 'sharp'
@@ -22,15 +23,27 @@ async function photoData(src: string) {
   return `data:image/jpeg;base64,${out.toString('base64')}`
 }
 
-/** The preview card people see when the link is texted or posted. Updates with the names/date in the Studio. */
-export default async function OpengraphImage() {
+/** All the file/network work, cached so the card can be pre-rendered at build time (and on static hosts). */
+async function cardAssets() {
+  'use cache'
+  cacheTag('content')
+  cacheLife('max')
   const { settings: s } = await getContent()
+  const font = async (f: string) => (await readFile(join(process.cwd(), 'app/fonts/og', f))).toString('base64')
   const [serif, serifItalic, sans, photo] = await Promise.all([
-    readFile(join(process.cwd(), 'app/fonts/og/cormorant-garamond-latin-300-normal.woff')),
-    readFile(join(process.cwd(), 'app/fonts/og/cormorant-garamond-latin-300-italic.woff')),
-    readFile(join(process.cwd(), 'app/fonts/og/jost-latin-500-normal.woff')),
+    font('cormorant-garamond-latin-300-normal.woff'),
+    font('cormorant-garamond-latin-300-italic.woff'),
+    font('jost-latin-500-normal.woff'),
     photoData((s.shareImage ?? s.heroImage).src),
   ])
+  return { s, serif, serifItalic, sans, photo }
+}
+
+/** The preview card people see when the link is texted or posted. Updates with the names/date in the Studio. */
+export default async function OpengraphImage() {
+  const a = await cardAssets()
+  const { s, photo } = a
+  const [serif, serifItalic, sans] = [a.serif, a.serifItalic, a.sans].map((b) => Buffer.from(b, 'base64'))
   const place = s.location.includes('[') ? '' : s.location
 
   return new ImageResponse(
