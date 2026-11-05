@@ -13,7 +13,7 @@ const CONTENT_QUERY = defineQuery(`{
   },
   "events": *[_type == "event"] | order(start asc){ "id": _id, name, start, end, dayLabel, timeLabel, venue, address, mapUrl, attire, description, image${IMG} },
   "story": *[_type == "storyMoment"] | order(order asc){ "id": _id, dateLabel, title, body, image${IMG} },
-  "people": *[_type == "person"] | order(order asc){ "id": _id, name, role, note, image${IMG} },
+  "people": *[_type == "person"] | order(order asc){ "id": _id, name, role, note, "group": coalesce(group, "padrinos"), image${IMG} },
   "faqs": *[_type == "faq"] | order(order asc){ "id": _id, question, answer },
   "registry": *[_type == "registryLink"] | order(order asc){ "id": _id, name, url, note },
   "gallery": *[_type == "galleryImage"] | order(order asc){ "id": _id, caption, image${IMG} },

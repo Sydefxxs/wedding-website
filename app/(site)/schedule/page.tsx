@@ -5,7 +5,7 @@ import { PageHeader } from '@/components/ui/PageHeader'
 import { Photo } from '@/components/ui/Photo'
 import { ImageReveal } from '@/components/motion/ImageReveal'
 import { Reveal } from '@/components/motion/Reveal'
-import { googleCalendarUrl, icsDataUrl, cn } from '@/lib/utils'
+import { googleCalendarUrl, icsDataUrl, cn, googleMapsUrl, appleMapsUrl } from '@/lib/utils'
 
 export const metadata: Metadata = { title: 'Schedule' }
 
@@ -51,7 +51,8 @@ export default async function SchedulePage() {
                       )}
                     </dl>
                     <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3">
-                      {e.mapUrl && <a href={e.mapUrl} target="_blank" rel="noreferrer" className="eyebrow link-draw">Directions</a>}
+                      <a href={googleMapsUrl(e)} target="_blank" rel="noreferrer" className="eyebrow link-draw">Google Maps</a>
+                      <a href={appleMapsUrl(e)} target="_blank" rel="noreferrer" className="eyebrow link-draw">Apple Maps</a>
                       <a href={googleCalendarUrl(e, couple)} target="_blank" rel="noreferrer" className="eyebrow link-draw inline-flex items-center gap-2">
                         <CalendarPlus aria-hidden size={16} weight="light" /> Google Calendar
                       </a>

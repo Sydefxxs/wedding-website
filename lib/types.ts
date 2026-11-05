@@ -52,7 +52,8 @@ export type WeddingEvent = {
 
 export type StoryMoment = { id: string; dateLabel: string; title: string; body: string; image: Img }
 
-export type Person = { id: string; name: string; role: string; note: string; image: Img }
+export type PersonGroup = 'parents' | 'padrinos'
+export type Person = { id: string; name: string; role: string; note?: string; group: PersonGroup; image: Img }
 
 export type Faq = { id: string; question: string; answer: string }
 

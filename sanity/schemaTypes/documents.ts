@@ -91,6 +91,11 @@ export const person = defineType({
   title: 'Wedding party member',
   type: 'document',
   fields: [
+    defineField({
+      name: 'group', title: 'Section', type: 'string', initialValue: 'padrinos',
+      options: { list: [{ title: 'Our parents', value: 'parents' }, { title: 'Padrinos', value: 'padrinos' }], layout: 'radio' },
+      validation: (r) => r.required(),
+    }),
     defineField({ name: 'name', type: 'string', validation: (r) => r.required() }),
     defineField({ name: 'role', type: 'string' }),
     defineField({ name: 'note', title: 'One line about them', type: 'string' }),

@@ -104,7 +104,7 @@ async function main() {
     docs.push({ _id: `story-${m.id}`, _type: 'storyMoment', dateLabel: m.dateLabel, title: m.title, body: m.body, image: await photo(m.image), order: (i + 1) * 10 })
   }
   for (const [i, p] of C.people.entries()) {
-    docs.push({ _id: `person-${p.id}`, _type: 'person', name: p.name, role: p.role, note: p.note, image: await photo(p.image), order: (i + 1) * 10 })
+    docs.push({ _id: `person-${p.id}`, _type: 'person', name: p.name, role: p.role, note: p.note, group: p.group, image: await photo(p.image), order: (i + 1) * 10 })
   }
   for (const [i, f] of C.faqs.entries()) {
     docs.push({ _id: `faq-${f.id}`, _type: 'faq', question: f.question, answer: f.answer, order: (i + 1) * 10 })

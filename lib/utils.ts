@@ -28,3 +28,11 @@ export function icsDataUrl(e: { id: string; name: string; start: string; end?: s
   ].join('\r\n')
   return `data:text/calendar;charset=utf-8,${encodeURIComponent(ics)}`
 }
+
+/** Directions links — open the Google Maps / Apple Maps app on phones, the website elsewhere. */
+export function googleMapsUrl(e: { venue: string; address: string; mapUrl?: string }) {
+  return e.mapUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${e.venue}, ${e.address}`)}`
+}
+export function appleMapsUrl(e: { venue: string; address: string }) {
+  return `https://maps.apple.com/?q=${encodeURIComponent(e.venue)}&address=${encodeURIComponent(e.address)}&daddr=${encodeURIComponent(e.address)}`
+}

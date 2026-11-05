@@ -68,9 +68,9 @@ Each phase ends with something we can open and react to. Agents/skills reference
 ---
 
 ## Still needed from us
+- Photos of our parents (Mayra & Jose Garza, Linda & Felipe Morales)
+- Padrinos: names, which padrinos they are, photos
 - Our Story: the text and dates for each moment
-- Wedding party: names, roles, one line each, photos
 - Registry: real Amazon link, honeymoon destination + fund link
-- Photo of Santa Fe Event Center
-- Confirm the address (260 vs 290 Mexico Blvd) and that thegarzas@gmail.com is real
-- When the party ends (for calendar invites)
+- Photo of Santa Fe Event Center (the salon)
+- Confirm thegarzas@gmail.com is real

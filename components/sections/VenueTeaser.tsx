@@ -4,6 +4,7 @@ import { Photo } from '@/components/ui/Photo'
 import { ImageReveal } from '@/components/motion/ImageReveal'
 import { Reveal } from '@/components/motion/Reveal'
 import { ButtonLink } from '@/components/ui/Button'
+import { appleMapsUrl, googleMapsUrl } from '@/lib/utils'
 
 /** Where it all happens — venue name, address, directions. Uses the first event's venue. */
 export function VenueTeaser({ events }: { events: WeddingEvent[] }) {
@@ -31,8 +32,8 @@ export function VenueTeaser({ events }: { events: WeddingEvent[] }) {
             <p className="mt-4 text-ink-2">Ceremony, dinner and party are all here — no driving between events.</p>
           )}
           <div className="mt-10 flex flex-wrap gap-4">
-            {first.mapUrl && <ButtonLink href={first.mapUrl}>Directions</ButtonLink>}
-            <ButtonLink href="/schedule" variant="secondary" arrow={false}>Schedule</ButtonLink>
+            <ButtonLink href={googleMapsUrl(first)}>Google Maps</ButtonLink>
+            <ButtonLink href={appleMapsUrl(first)} variant="secondary">Apple Maps</ButtonLink>
           </div>
         </Reveal>
       </div>
