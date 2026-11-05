@@ -62,7 +62,7 @@ export function Nav({ links, a, b, dateLabel }: { links: NavLink[]; a: string; b
       >
         <div className="container-x flex items-center justify-between gap-6">
           <Link href="/" className="flex items-center gap-3" aria-label="Home">
-            <Monogram a={a} b={b} className="w-11 text-[2.6rem]" />
+            <Monogram a={a} b={b} dark={overHero} className="w-11 text-[2.6rem]" />
             <span className="hidden eyebrow text-[0.7rem] opacity-80 sm:inline">{dateLabel}</span>
           </Link>
 
@@ -81,10 +81,7 @@ export function Nav({ links, a, b, dateLabel }: { links: NavLink[]; a: string; b
           <div className="flex items-center gap-3">
             <Link
               href="/rsvp"
-              className={cn(
-                'eyebrow inline-flex h-10 items-center rounded-full px-5 text-[0.72rem] transition-colors duration-500',
-                overHero ? 'border border-white/70 hover:bg-white hover:text-ink' : 'bg-primary text-primary-ink hover:bg-primary-hover',
-              )}
+              className="eyebrow inline-flex h-10 items-center rounded-full bg-primary px-5 text-[0.72rem] text-primary-ink transition-colors duration-500 hover:bg-primary-hover"
             >
               RSVP
             </Link>

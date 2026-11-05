@@ -45,8 +45,8 @@ export function GalleryStrip({ images }: { images: GalleryImage[] }) {
         className="flex snap-x snap-mandatory items-center gap-5 overflow-x-auto px-5 [scrollbar-width:none] md:gap-8 md:overflow-visible md:px-[8vw] md:will-change-transform"
       >
         <div className="w-[78vw] shrink-0 snap-start md:w-[30vw]">
-          <p className="eyebrow mb-6 text-accent">Gallery</p>
-          <h2 className="text-h1">A few of our <em className="font-light">favorite</em> frames.</h2>
+          <p className="eyebrow mb-6 text-gold-light">Gallery</p>
+          <h2 className="text-h1">A few of our <em className="font-light text-gold-light">favorite</em> frames.</h2>
           <Link href="/gallery" className="eyebrow link-draw mt-10 inline-block">See them all</Link>
         </div>
         {shown.map((img, i) => {

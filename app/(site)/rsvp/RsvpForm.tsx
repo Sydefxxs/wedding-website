@@ -139,7 +139,7 @@ export function RsvpForm({ deadlineLabel }: { deadlineLabel: string }) {
 
       {step === 'done' && inv && (
         <div className="page-in text-center">
-          <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-success text-white"><Check size={28} weight="light" /></span>
+          <span className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-gold text-white"><Check size={28} weight="light" /></span>
           <h2 className="mt-8 text-h1">{anyYes ? 'We can’t wait to see you!' : 'We’ll miss you.'}</h2>
           <p className="text-lead mx-auto mt-5 max-w-md text-ink-2">
             {anyYes ? 'Your RSVP is in. Add the events to your calendar and take a look at travel and hotels.' : 'Thank you for letting us know — you’ll be with us in spirit.'}

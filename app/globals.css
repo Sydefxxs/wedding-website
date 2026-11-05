@@ -1,19 +1,23 @@
 @import "tailwindcss";
 
 /* ───── Design tokens (mirror DESIGN.md — change values here, not in components) ───── */
+/* "Ruby & Gold" — white wedding, red accents, gold details */
 :root {
-  --paper: #f7f3ec;
-  --paper-2: #efe8dc;
-  --ink: #1e1b18;
-  --ink-2: #5b544c;
-  --line: #d9cfc0;
-  --primary: #6b7a5e;
-  --primary-hover: #5c6a50;
+  --paper: #fffdfa;        /* warm white — page background */
+  --paper-2: #f7f1e7;      /* champagne cream — alternate sections */
+  --ink: #1b1517;          /* near-black — text, dark sections */
+  --ink-2: #5e5459;        /* secondary text */
+  --line: #e6dccd;         /* hairlines */
+  --primary: #8f1d2c;      /* ruby red — buttons, links, italic highlights */
+  --primary-hover: #741522;
   --primary-ink: #ffffff;
-  --accent: #b4765a;
-  --success: #4f7a55;
-  --warning: #b4862f;
-  --error: #a6403a;
+  --accent: #806128;       /* antique gold — small labels on light backgrounds (5:1) */
+  --gold: #a9843f;         /* gold — rings, dividers, ornaments, large type */
+  --gold-light: #d9bc7a;   /* gold on dark backgrounds */
+  --wine: #4a0f18;         /* deep red band — footer, favicon, share card */
+  --success: #3f7a4f;
+  --warning: #a06f12;
+  --error: #b3261e;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   color-scheme: light;
 }
@@ -28,6 +32,9 @@
   --color-primary-hover: var(--primary-hover);
   --color-primary-ink: var(--primary-ink);
   --color-accent: var(--accent);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-wine: var(--wine);
   --color-success: var(--success);
   --color-warning: var(--warning);
   --color-error: var(--error);
@@ -67,8 +74,8 @@
     text-rendering: optimizeLegibility;
   }
   ::selection {
-    background: var(--accent);
-    color: var(--paper);
+    background: var(--primary);
+    color: var(--primary-ink);
   }
   :focus-visible {
     outline: 2px solid var(--primary);

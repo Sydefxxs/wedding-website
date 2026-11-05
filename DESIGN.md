@@ -1,28 +1,34 @@
-# DESIGN.md — "Editorial Romance" (draft v0.1)
+# DESIGN.md — "Ruby & Gold" (v1.0)
 
-> **Draft.** Chosen as a starting point because we haven't picked colors yet. It's based on patterns from the wedding-site research in `docs/INSPIRATION.md` (serif names, soft neutrals, big photography), not on a visual audit of specific sites. Swap the palette once we choose our wedding colors — every page reads these tokens, so a change here changes the whole site.
+> Matches the wedding itself: **white, with red accents and gold details** (gold like the place settings and centerpieces). Every page reads these tokens (`app/globals.css`), so a change here changes the whole site. If we pick an exact red from the flowers or linens, swap `--primary` / `--wine`.
 
-**Feeling:** a printed wedding magazine come to life — calm, luxurious, personal, with cinematic motion. Photos do the talking; type is large and confident; color is restrained.
+**Feeling:** a printed wedding invitation come to life — white and airy, formal like their black-and-white engagement photos, with red where you'd find roses and gold where you'd find gilding. Photos do the talking; type is large and confident.
 
 ---
 
 ## Color
 
-| Token | Light | Dark | Role |
-|---|---|---|---|
-| `--paper` | `#F7F3EC` | `#161412` | Page background (warm ivory) |
-| `--paper-2` | `#EFE8DC` | `#1F1C19` | Alternate section background, cards |
-| `--ink` | `#1E1B18` | `#F2ECE2` | Primary text, headings |
-| `--ink-2` | `#5B544C` | `#B7AEA2` | Secondary text, captions |
-| `--line` | `#D9CFC0` | `#38322C` | Borders, dividers, hairlines |
-| `--primary` | `#6B7A5E` | `#9DAE8E` | Buttons, links, active nav (sage/olive) |
-| `--primary-ink` | `#FFFFFF` | `#161412` | Text on primary |
-| `--accent` | `#B4765A` | `#D29A7E` | Sparingly: monogram, date, small flourishes (terracotta) |
-| `--success` | `#4F7A55` | `#8DBF93` | RSVP confirmed |
-| `--warning` | `#B4862F` | `#E0B867` | Deadline approaching |
-| `--error` | `#A6403A` | `#E58A84` | Form errors |
+| Token | Value | Role |
+|---|---|---|
+| `--paper` | `#FFFDFA` | Page background (warm white) |
+| `--paper-2` | `#F7F1E7` | Alternate sections, cards (champagne cream) |
+| `--ink` | `#1B1517` | Text, headings; dark sections (hero panel, gallery strip) |
+| `--ink-2` | `#5E5459` | Secondary text, captions |
+| `--line` | `#E6DCCD` | Hairlines, borders |
+| `--primary` | `#8F1D2C` | **Ruby red** — buttons, RSVP, links, italic highlight words, story dates |
+| `--primary-hover` | `#741522` | Hover/pressed red |
+| `--primary-ink` | `#FFFFFF` | Text on red |
+| `--accent` | `#806128` | **Antique gold** — small labels (eyebrows) on light backgrounds |
+| `--gold` | `#A9843F` | **Gold** — monogram ring, page dividers, story thread, icons, ornaments |
+| `--gold-light` | `#D9BC7A` | Gold on dark backgrounds (hero, gallery strip, footer) |
+| `--wine` | `#4A0F18` | Deep red band — footer, favicon, link-preview card |
+| `--success` / `--warning` / `--error` | `#3F7A4F` / `#A06F12` / `#B3261E` | Form states |
 
-Rules: one primary, one accent. Text ≥ 4.5:1 contrast; text over photos always sits on a gradient scrim (`rgba(0,0,0,.45)` → transparent). No gradient text, no purple, no glassmorphism.
+Rules:
+- White leads; red is an accent (one or two touches per screen); gold is for linework and small details — never big gold fills.
+- Contrast: red on white 8.8:1, antique gold on white 5.7:1 (OK for small text), `--gold` is 3.5:1 → only for large type, lines and icons. Text over photos sits on a scrim.
+- Red never sits directly on near-black (too low contrast) — use `--gold-light` on dark backgrounds.
+- No gradient text, no glassmorphism, no glitter textures.
 
 ## Typography
 
@@ -53,23 +59,26 @@ Rules: one primary, one accent. Text ≥ 4.5:1 contrast; text over photos always
 - Hairline 1px `--line` dividers and frames instead of boxes
 
 ## Components
-- **Button primary:** pill, `--primary` bg, Jost 500 uppercase tracked, 48px tall; hover darkens 8% + arrow nudges; focus 2px ring offset 3px
-- **Button secondary:** pill outline `--ink`; hover fills
+- **Button primary:** ruby-red pill, Jost 500 uppercase tracked, 48px tall; hover darkens + arrow nudges; focus 2px ring offset 3px
+- **Button secondary:** pill outline `--ink`; hover fills. **Light:** white outline for dark/red backgrounds
 - **Quiet link:** underline that draws in on hover
-- **Nav:** transparent over hero, turns `--paper` with hairline on scroll; RSVP button always visible; mobile = full-screen overlay menu with staggered links
-- **Event card:** time (display numerals), name (h3), venue, attire chip, "Map" + "Add to calendar"
-- **Inputs:** underline style, large label, clear error text below
-- **Footer:** monogram, date, "Made with love" line
+- **Headings:** one italic word or phrase in ruby red ("Where to be, *and when.*"); gold-light italics on dark sections
+- **Monogram:** initials in a thin gold ring, red ampersand (gold on dark)
+- **Nav:** transparent over hero, turns `--paper` with hairline on scroll; red RSVP pill always visible; mobile = full-screen overlay menu with staggered links
+- **Page header:** antique-gold eyebrow, large title, gold hairline that draws across
+- **Event card:** time (display numerals), name (h3), venue, attire, "Directions" + "Add to calendar"
+- **Inputs:** underline style, large label, clear error text below; RSVP choices are pills that fill red when chosen
+- **Footer:** deep wine band — gold eyebrow and italics, gold monogram ring, white RSVP outline button
 
 ## Motion
 - Ease: `cubic-bezier(.22,1,.36,1)` (expo-out); durations 400–900ms; stagger 60–90ms
 - Reveal: fade + 24px rise, triggered once at 15% in view
 - Images: subtle scale 1.08 → 1 as they enter; parallax max 10%
-- Page transition: ivory curtain wipe, 600ms
+- Page transition: champagne curtain wipe, 900ms
 - `prefers-reduced-motion`: opacity fades only, no parallax/pinning/smooth-scroll
 
 ## Imagery & icons
-- Photography-led: full-bleed hero, mixed portrait/landscape in gallery, film-like warm grade
-- Placeholders: warm-toned stock until we swap (see `docs/PLACEHOLDER_IMAGES.md`)
-- Icons: **Phosphor (light weight)**, 20–24px, `--ink-2`. No emoji as icons.
-- Optional: thin botanical line illustrations in `--accent` as section dividers
+- Photography-led: vertical hero photo as a tall panel on desktop, full-bleed on phones; gallery shown uncropped
+- Placeholders: soft-blur stand-ins in ivory / champagne / ruby tones until we swap (see `docs/PLACEHOLDER_IMAGES.md`)
+- Icons: **Phosphor (light weight)**, 20–24px, `--ink-2` or `--gold`. No emoji as icons.
+- Optional later: thin gold line ornaments (roses, a laurel) as section dividers, matched to the invitations

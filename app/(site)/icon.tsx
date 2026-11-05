@@ -9,7 +9,7 @@ export default async function Icon() {
   const { settings: s } = await getContent()
   return new ImageResponse(
     (
-      <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 32, background: '#1e1b18', color: '#f7f3ec', fontSize: 24, fontFamily: 'serif', border: '2px solid #b4765a' }}>
+      <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', borderRadius: 32, background: '#4a0f18', color: '#fffdfa', fontSize: 24, fontFamily: 'serif', border: '2px solid #d9bc7a' }}>
         {s.partnerOne[0]}&amp;{s.partnerTwo[0]}
       </div>
     ),

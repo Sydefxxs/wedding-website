@@ -26,7 +26,7 @@ export default async function TravelPage() {
         <Reveal stagger className="divide-y divide-line border-y border-line md:col-span-7 md:col-start-6">
           {travel.airports.map((a) => (
             <div key={a.code} className="grid grid-cols-[auto_1fr] items-baseline gap-x-6 py-6">
-              <span className="flex items-center gap-3 font-display text-h2"><AirplaneTilt aria-hidden size={22} weight="light" className="text-accent" />{a.code}</span>
+              <span className="flex items-center gap-3 font-display text-h2"><AirplaneTilt aria-hidden size={22} weight="light" className="text-gold" />{a.code}</span>
               <span><span className="block font-medium">{a.name}</span><span className="text-ink-2">{a.drive}</span></span>
             </div>
           ))}

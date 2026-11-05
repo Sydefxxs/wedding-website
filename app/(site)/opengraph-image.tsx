@@ -48,21 +48,21 @@ export default async function OpengraphImage() {
 
   return new ImageResponse(
     (
-      <div style={{ width: '100%', height: '100%', display: 'flex', background: '#1e1b18', color: '#f7f3ec' }}>
+      <div style={{ width: '100%', height: '100%', display: 'flex', background: '#4a0f18', color: '#fffdfa' }}>
         {/* eslint-disable-next-line jsx-a11y/alt-text */}
         <img src={photo} width={PHOTO_W} height={size.height} style={{ objectFit: 'cover' }} />
         <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px' }}>
-          <div style={{ fontFamily: 'Jost', fontSize: 20, letterSpacing: 6, textTransform: 'uppercase', color: '#d29a7e' }}>Save the date</div>
+          <div style={{ fontFamily: 'Jost', fontSize: 20, letterSpacing: 6, textTransform: 'uppercase', color: '#d9bc7a' }}>Save the date</div>
           <div style={{ display: 'flex', flexDirection: 'column', fontFamily: 'Cormorant', fontSize: 128, lineHeight: 0.95, marginTop: 28 }}>
             <span>{s.partnerOne}</span>
             <span style={{ display: 'flex', paddingLeft: 60 }}>
-              <span style={{ fontFamily: 'Cormorant Italic', color: '#d29a7e', marginRight: 24 }}>&amp;</span>
+              <span style={{ fontFamily: 'Cormorant Italic', color: '#d9bc7a', marginRight: 24 }}>&amp;</span>
               {s.partnerTwo}
             </span>
           </div>
-          <div style={{ width: 120, height: 1, background: 'rgba(247,243,236,.35)', marginTop: 40 }} />
+          <div style={{ width: 120, height: 1, background: '#d9bc7a', marginTop: 40 }} />
           <div style={{ fontFamily: 'Cormorant', fontSize: 44, marginTop: 28 }}>{s.dateLabel}</div>
-          <div style={{ fontFamily: 'Jost', fontSize: 18, letterSpacing: 4, textTransform: 'uppercase', color: 'rgba(247,243,236,.7)', marginTop: 10 }}>
+          <div style={{ fontFamily: 'Jost', fontSize: 18, letterSpacing: 4, textTransform: 'uppercase', color: 'rgba(255,253,250,.72)', marginTop: 10 }}>
             {[s.lastName && `The ${s.lastName} wedding`, place].filter(Boolean).join(' · ')}
           </div>
         </div>

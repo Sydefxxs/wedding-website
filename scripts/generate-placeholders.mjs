@@ -8,12 +8,13 @@ import path from 'node:path'
 const OUT = path.join(process.cwd(), 'public', 'placeholders')
 
 // Warm, photo-like palettes (shadow, mid, light, glow)
+// Matches the wedding: white, red accents, gold details
 const PALETTES = [
-  ['#2b2420', '#6b5a4a', '#c9b49a', '#f3e3c8'], // candlelight
-  ['#1f2620', '#4f5e46', '#9daa8a', '#e8ead6'], // sage garden
-  ['#2a1d19', '#7d4c3a', '#c98f73', '#f4d6c2'], // terracotta dusk
-  ['#22211f', '#55504a', '#a69d90', '#ece5d9'], // linen
-  ['#1b1e24', '#3d4656', '#8c93a3', '#e6e1d8'], // blue hour
+  ['#1f1b17', '#6b5a3c', '#c9ad78', '#f6ead0'], // champagne gold
+  ['#2a1418', '#6e2a33', '#b9787f', '#f3d9d4'], // ruby rose
+  ['#22201f', '#57504c', '#b9b0a6', '#f6f1ea'], // ivory linen
+  ['#1b1416', '#4a2a2f', '#a07a6a', '#efdccb'], // candlelight
+  ['#1a1517', '#4a0f18', '#a9843f', '#f2e4c4'], // wine & gold
 ]
 
 const slots = [

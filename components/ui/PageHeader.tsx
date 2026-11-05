@@ -22,7 +22,7 @@ export function PageHeader({ eyebrow, title, lead }: { eyebrow?: string; title: 
           </Reveal>
         )}
       </div>
-      <div aria-hidden className="mt-16 h-px w-full origin-left bg-line md:mt-24 hairline-draw" />
+      <div aria-hidden className="mt-16 h-px w-full origin-left bg-gold md:mt-24 hairline-draw" />
     </header>
   )
 }

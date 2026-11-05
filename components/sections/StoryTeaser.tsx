@@ -25,7 +25,7 @@ export function StoryTeaser({ story }: { story: StoryMoment[] }) {
         <div className="order-1 md:order-2 md:col-span-4 md:col-start-9">
           <Reveal>
             <p className="eyebrow mb-6 text-accent">Our story</p>
-            <h2 className="text-h1">How we got <em className="font-light">here.</em></h2>
+            <h2 className="text-h1">How we got <em className="font-light text-primary">here.</em></h2>
             <p className="text-lead mt-8 text-ink-2">From {a.title.toLowerCase()} to {story[story.length - 1].title.toLowerCase()} — the short version, with photos.</p>
             <ButtonLink href="/story" variant="secondary" className="mt-10">Read our story</ButtonLink>
           </Reveal>
