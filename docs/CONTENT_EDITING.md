@@ -9,7 +9,6 @@ Once Phase 2 is live, everything is editable at **`yourdomain.com/studio`** — 
 | Edit a page's text or reorder sections | **Pages** → pick page → drag sections |
 | Add a new page (e.g. "Things to Do") | **Pages** → New → add sections → add to nav in Site Settings |
 | Add/change an event | **Events** |
-| Add a hotel block | **Hotels** |
 | Answer a new FAQ | **FAQ** → New (drag to reorder) |
 | Add gallery photos | **Gallery** → drag & drop many at once |
 | Hide a guest photo | **Guest photos** → open it → tick **Hidden** |

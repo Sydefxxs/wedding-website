@@ -36,7 +36,6 @@ wedding-website/
 | Section blocks | `hero`, `intro`, `storyTimeline`, `eventList`, `travelInfo`, `hotelList`, `peopleGrid`, `gallery`, `registryLinks`, `faqList`, `ctaBanner`, `richText` |
 | `event` | name, start/end, venue, address, map URL, attire, description, invite-only flag |
 | `storyMoment` | date, title, text, image |
-| `hotel` | name, distance, price, booking link, code, deadline, image |
 | `person` | name, role, side, photo, note |
 | `faq` | question, answer, order |
 | `galleryImage` | image, caption, orientation |
