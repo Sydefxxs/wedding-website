@@ -1,86 +1,73 @@
-# Roadmap
+# Roadmap — Arath & Ruby · April 24, 2027
 
-Each phase ends with something we can open and react to. Tick boxes as we go.
-Agents/skills referenced live in `.claude/` — see [`AI_WORKFLOW.md`](AI_WORKFLOW.md).
+Each phase ends with something we can open and react to. Agents/skills referenced live in `.claude/` — see [`AI_WORKFLOW.md`](AI_WORKFLOW.md).
 
 ---
 
-## Phase 0 — Plan & document ✅ *(this commit)*
+## Phase 0 — Plan & document ✅
 - [x] Research top wedding websites → `docs/INSPIRATION.md`
-- [x] Pick stack (Next.js + Sanity + GSAP) → `docs/ARCHITECTURE.md`
-- [x] Draft design direction → `DESIGN.md`
-- [x] Placeholder image plan → `docs/PLACEHOLDER_IMAGES.md`
+- [x] Stack: Next.js + Sanity + GSAP → `docs/ARCHITECTURE.md`
+- [x] Design direction → `DESIGN.md`
+- [x] Image slot plan → `docs/PLACEHOLDER_IMAGES.md`
 - [x] Project agents & skills → `.claude/`
-- [ ] **We fill in:** names, date, city/venue(s), colors or vibe we love, 3 sites we like *(see "Info we need" below)*
+- [x] Names (Arath & Ruby Garza) and date (April 24, 2027)
 
-## Phase 1 — Foundation
-*Agent: `frontend-builder` · Skill: `wedding-section`*
-- [ ] Scaffold Next.js + TypeScript + Tailwind, ESLint/Prettier
-- [ ] Put `DESIGN.md` tokens into Tailwind theme + CSS variables
-- [ ] Load fonts with `next/font`
-- [ ] Base layout: sticky nav (with RSVP button), footer, page shell
-- [ ] Lenis smooth scroll + reduced-motion fallback
-- [ ] Deploy to Vercel → first preview link
-- **Done when:** a live link shows an empty but styled shell on phone + desktop
+## Phase 1 — Foundation ✅
+- [x] Next.js 16 + TypeScript + Tailwind 4 + ESLint
+- [x] `DESIGN.md` tokens → CSS variables + Tailwind theme
+- [x] Self-hosted fonts (Cormorant Garamond + Jost)
+- [x] Layout: menu that turns solid on scroll (RSVP always visible), full-screen phone menu, footer
+- [x] Lenis smooth scroll + reduced-motion fallback
+- [ ] Deploy to Vercel → first preview link *(needs our Vercel login — `docs/SETUP.md` §4)*
 
-## Phase 2 — CMS (make it editable)
-*Agent: `cms-architect` · Skill: `add-cms-content-type`*
-- [ ] Create Sanity project, embed Studio at `/studio`
-- [ ] Schemas: `siteSettings`, `page` (with section builder), `event`, `storyMoment`, `hotel`, `faq`, `person`, `galleryImage`, `registry`, `guest`, `rsvp`
-- [ ] Seed with placeholder content + placeholder images
-- [ ] Turn on Visual Editing / Presentation (click any text on the site → edit it)
-- [ ] Webhook / on-demand revalidation so edits go live instantly
-- **Done when:** we change the hero headline in Studio and see it on the site in seconds
+## Phase 2 — CMS (make it editable) 🟡
+- [x] Embedded Studio at `/studio`, sidebar organized for us
+- [x] Schemas: site settings, events, story, hotels, wedding party, FAQ, registry, gallery, custom pages, guests, RSVPs
+- [x] "Still placeholder" list in the Studio
+- [x] Webhook route for instant updates
+- [x] `npm run seed` — loads all content + photos into Sanity
+- [ ] Create the Sanity project + tokens, run the seed *(needs our Sanity login — `docs/SETUP.md` §2)*
+- [ ] Click-to-edit Visual Editing (Presentation tool)
 
-## Phase 3 — Pages
-*Agents: `frontend-builder`, `content-writer` · Skills: `wedding-section`, `wedding-copy`*
-- [ ] Home — hero, names, date, countdown, intro, CTA
-- [ ] Our Story — timeline
-- [ ] Schedule — event cards with map links, attire, add-to-calendar (.ics)
-- [ ] Travel & Stay — hotels, airports, things to do, embedded map
-- [ ] Wedding Party
-- [ ] Gallery
-- [ ] Registry
-- [ ] FAQ (accordion)
-- **Done when:** every page has real structure + placeholder copy we can edit
+## Phase 3 — Pages ✅
+- [x] Home — hero, countdown, intro, the weekend, story collage, gallery strip, travel teaser
+- [x] Our Story — timeline
+- [x] Schedule — event cards, directions, add-to-calendar (Google / .ics)
+- [x] Travel & Stay — airports, hotel blocks, tips
+- [x] Wedding Party · Gallery (+ viewer) · Registry · FAQ
+- [x] Custom pages (example: `/things-to-do`)
+- [x] Link-preview card with our save-the-date photo; favicon from our initials
 
-## Phase 4 — The "wow" (motion & visuals)
-*Agent: `motion-designer` · Skill: `motion-pattern`*
-- [ ] Hero: slow Ken-Burns photo or muted video loop, names reveal letter-by-letter
-- [ ] Animated page transitions (fade/curtain)
-- [ ] Our Story: pinned scroll timeline, photos parallax in
-- [ ] Gallery: horizontal-scroll strip on desktop, swipe on mobile, lightbox
-- [ ] Monogram / signature SVG draw-on animation
-- [ ] Micro-interactions: buttons, nav underline, countdown flip
-- [ ] Every animation has a `prefers-reduced-motion` version
-- **Done when:** it feels cinematic on a mid-range phone at 60fps
+## Phase 4 — The "wow" ✅
+- [x] Hero: names reveal letter by letter, slow photo zoom; vertical photos get a tall side panel on desktop
+- [x] Page transition curtain
+- [x] Our Story: thread draws down the page, photos in parallax
+- [x] Gallery strip pins and glides sideways (swipe row on phones)
+- [x] Photo curtain reveals, monogram ring draw, live countdown
+- [x] Reduced-motion versions of everything
 
-## Phase 5 — RSVP
-*Agent: `cms-architect` · Skill: `add-cms-content-type`*
-- [ ] Guest list import (CSV → Sanity `guest` docs, households/parties)
-- [ ] Guest lookup by name (no public list exposed)
-- [ ] Per-event attendance, meal choice, dietary notes, song request, message
-- [ ] Confirmation screen + optional email confirmation
-- [ ] RSVP deadline + "edit my RSVP" link
-- [ ] Studio view to see/export responses
-- **Done when:** a test guest can RSVP and we see it in Studio
+## Phase 5 — RSVP 🟡
+- [x] Guest finds invitation by full name (no list exposed, rate-limited)
+- [x] Per-person, per-event answers, dietary needs, song request, note
+- [x] Confirmation screen; validation; works in demo mode now
+- [x] Guest list CSV import (`npm run import-guests`, preview first)
+- [ ] Turn on saving to Sanity (happens automatically once Phase 2 is connected)
+- [ ] Optional: confirmation email (Resend) · "edit my RSVP" link · CSV export of responses
 
 ## Phase 6 — Polish, privacy & launch
-*Agent: `qa-reviewer` · Skill: `launch-checklist`*
-- [ ] Swap placeholder photos for ours (`swap-placeholder-image`)
-- [ ] Optional site password / `noindex` for privacy
-- [ ] Accessibility pass (contrast, keyboard, alt text, focus)
-- [ ] Performance: Lighthouse 90+ mobile, images AVIF/WebP, LCP < 2.5s
-- [ ] Share preview: Open Graph image with our names & date
-- [ ] Custom domain (e.g. `firstandsecond.com`)
-- [ ] Final proofread by both of us
-- **Done when:** we send the link to family 🎉
+- [ ] Fill every `[bracket]`: city, venues, times, dress code, hotels, registry links, RSVP deadline
+- [ ] Remaining photos: venues, travel, hotels, wedding party (`swap-placeholder-image` skill)
+- [ ] Ask Roy Esparza for web-size files (and OK to post with credit)
+- [ ] Optional site password
+- [ ] Accessibility + Lighthouse pass (`qa-reviewer` agent, `launch-checklist` skill)
+- [ ] Custom domain
+- [ ] Final proofread by both of us → send the link 🎉
 
 ---
 
-## Info we need from us
-- Our names (as we want them shown) and wedding date
-- Venue(s) + city, and events beyond the ceremony/reception
-- A vibe or colors (or 3 websites / Pinterest boards we love)
-- Hotel blocks, registry links (can come later)
-- Domain name idea
+## Still needed from us
+- City + venue(s) for each event, and real times
+- Dress code, kids policy, parking
+- Hotel blocks, registry links, RSVP deadline
+- Wedding party names + photos
+- Domain name idea (e.g. `arathandruby.com`)

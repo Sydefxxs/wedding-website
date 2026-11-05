@@ -11,7 +11,7 @@ Warm, personal, lightly playful. Sounds like the couple talking to people they l
 ## Rules by area
 | Area | Rule | Example |
 |---|---|---|
-| Hero | Names + date + place. Nothing else competes. | **Ana & Luis** · June 12, 2027 · San Miguel de Allende |
+| Hero | Names + date + place. Nothing else competes. | **Arath & Ruby** · April 24, 2027 · [City] |
 | Intro | 2–3 sentences, why we're glad they're coming | |
 | Events | Answer-first: time, place, attire, then flavor | **4:30 PM · Ceremony** · Jardín Rosa · Garden formal — heels sink, bring flats |
 | Travel | Concrete numbers: airport codes, drive minutes, deadlines | Fly into BJX (1h 30m drive) |

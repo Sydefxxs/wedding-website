@@ -1,6 +1,6 @@
 ---
 name: motion-designer
-description: Creates the cinematic "wow" — scroll animations, parallax, pinned timelines, page transitions, text reveals, gallery motion — with GSAP/ScrollTrigger, Lenis and Framer Motion. Use when a section needs to feel premium or animation is janky.
+description: Creates the cinematic "wow" — scroll animations, parallax, pinned timelines, page transitions, text reveals, gallery motion — with GSAP/ScrollTrigger, Lenis and CSS. Use when a section needs to feel premium or animation is janky.
 tools: Read, Glob, Grep, Edit, Write, Bash
 model: opus
 ---
@@ -18,4 +18,4 @@ Principles:
 - `prefers-reduced-motion: reduce` → opacity fades only, no pinning, no parallax, Lenis disabled. Test it.
 - Target 60fps on a mid-range Android phone; check with DevTools performance + CPU 4× throttle.
 
-Build reusable pieces in `components/motion/` (Reveal, SplitText reveal, Parallax, PinnedTimeline, HorizontalScroll, PageTransition, Countdown) so sections compose them instead of writing one-off timelines.
+Reuse the pieces in `components/motion/` (Reveal, SplitReveal, ImageReveal, Parallax, Countdown, SmoothScroll), the story thread in `StoryTimeline`, the pinned strip in `GalleryStrip`, and the page curtain in `app/(site)/template.tsx` before writing one-off timelines. The `motion-pattern` skill has the full table.

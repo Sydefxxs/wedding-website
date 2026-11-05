@@ -8,7 +8,7 @@ This repo ships with Claude agents (`.claude/agents/`) and skills (`.claude/skil
 |---|---|---|
 | `design-director` | Look & feel, DESIGN.md, design reviews | Starting a page, changing colors, "this looks generic" |
 | `frontend-builder` | Builds pages/sections in Next.js + Tailwind | Any UI implementation |
-| `motion-designer` | GSAP/Lenis/Framer Motion "wow" | Hero, story timeline, gallery, page transitions, janky animation |
+| `motion-designer` | GSAP/ScrollTrigger + Lenis "wow" | Hero, story timeline, gallery, page transitions, janky animation |
 | `cms-architect` | Sanity schemas, Studio, RSVP + guest data | Making something editable, guest import, RSVP logic |
 | `content-writer` | Guest-facing wording | Any copy, FAQ, RSVP messages |
 | `qa-reviewer` | Read-only audit (a11y, perf, privacy, leftovers) | End of each phase, before launch |

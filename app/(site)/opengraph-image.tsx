@@ -1,0 +1,67 @@
+import { ImageResponse } from 'next/og'
+import { readFile } from 'node:fs/promises'
+import { join } from 'node:path'
+import sharp from 'sharp'
+import { getContent } from '@/lib/content'
+
+export const alt = 'Save the date'
+export const size = { width: 1200, height: 630 }
+export const contentType = 'image/png'
+
+const PHOTO_W = 500
+
+/** Crop our photo for the left panel (local file or Sanity CDN). */
+async function photoData(src: string) {
+  const buf = src.startsWith('/')
+    ? await readFile(join(process.cwd(), 'public', src))
+    : Buffer.from(await (await fetch(`${src}?w=1400&fm=jpg`)).arrayBuffer())
+  const out = await sharp(buf)
+    .resize(PHOTO_W, size.height, { fit: 'cover', position: sharp.strategy.attention })
+    .jpeg({ quality: 84 })
+    .toBuffer()
+  return `data:image/jpeg;base64,${out.toString('base64')}`
+}
+
+/** The preview card people see when the link is texted or posted. Updates with the names/date in the Studio. */
+export default async function OpengraphImage() {
+  const { settings: s } = await getContent()
+  const [serif, serifItalic, sans, photo] = await Promise.all([
+    readFile(join(process.cwd(), 'app/fonts/og/cormorant-garamond-latin-300-normal.woff')),
+    readFile(join(process.cwd(), 'app/fonts/og/cormorant-garamond-latin-300-italic.woff')),
+    readFile(join(process.cwd(), 'app/fonts/og/jost-latin-500-normal.woff')),
+    photoData((s.shareImage ?? s.heroImage).src),
+  ])
+  const place = s.location.includes('[') ? '' : s.location
+
+  return new ImageResponse(
+    (
+      <div style={{ width: '100%', height: '100%', display: 'flex', background: '#1e1b18', color: '#f7f3ec' }}>
+        {/* eslint-disable-next-line jsx-a11y/alt-text */}
+        <img src={photo} width={PHOTO_W} height={size.height} style={{ objectFit: 'cover' }} />
+        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: '0 72px' }}>
+          <div style={{ fontFamily: 'Jost', fontSize: 20, letterSpacing: 6, textTransform: 'uppercase', color: '#d29a7e' }}>Save the date</div>
+          <div style={{ display: 'flex', flexDirection: 'column', fontFamily: 'Cormorant', fontSize: 128, lineHeight: 0.95, marginTop: 28 }}>
+            <span>{s.partnerOne}</span>
+            <span style={{ display: 'flex', paddingLeft: 60 }}>
+              <span style={{ fontFamily: 'Cormorant Italic', color: '#d29a7e', marginRight: 24 }}>&amp;</span>
+              {s.partnerTwo}
+            </span>
+          </div>
+          <div style={{ width: 120, height: 1, background: 'rgba(247,243,236,.35)', marginTop: 40 }} />
+          <div style={{ fontFamily: 'Cormorant', fontSize: 44, marginTop: 28 }}>{s.dateLabel}</div>
+          <div style={{ fontFamily: 'Jost', fontSize: 18, letterSpacing: 4, textTransform: 'uppercase', color: 'rgba(247,243,236,.7)', marginTop: 10 }}>
+            {[s.lastName && `The ${s.lastName} wedding`, place].filter(Boolean).join(' · ')}
+          </div>
+        </div>
+      </div>
+    ),
+    {
+      ...size,
+      fonts: [
+        { name: 'Cormorant', data: serif, weight: 300, style: 'normal' },
+        { name: 'Cormorant Italic', data: serifItalic, weight: 300, style: 'italic' },
+        { name: 'Jost', data: sans, weight: 500, style: 'normal' },
+      ],
+    },
+  )
+}

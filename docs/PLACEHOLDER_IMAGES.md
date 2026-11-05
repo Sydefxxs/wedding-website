@@ -1,40 +1,33 @@
-# Placeholder images
+# Images — real photos & placeholders
 
-All photos right now are **temporary**. Each image "slot" has a fixed ID, so swapping is one upload — layout won't break.
+Each image "slot" has a fixed place on the site, so swapping one never breaks the layout.
 
-## How placeholders work
-- Placeholders live in `public/placeholders/` and are also seeded into Sanity, named by slot ID (e.g. `hero-main.jpg`).
-- Sources: free warm-toned stock (Unsplash license) or solid-color blocks with the slot name printed on them, so it's obvious what still needs swapping.
-- Every placeholder is tagged `placeholder: true` in Sanity → Studio shows a **"Still placeholder"** list so nothing slips through to launch.
+- **Real photos** live in `public/photos/` (listed in `content/photos.json`).
+- **Temporary stand-ins** (soft-blur images with the slot name printed on them) live in `public/placeholders/` and are flagged `placeholder: true` → once Sanity is connected, Studio shows them under **"Still placeholder"** so nothing slips through to launch.
 
-## How to swap one (no code)
-1. Open `/studio` → find the section (e.g. Home → Hero).
-2. Click the image → **Upload** your photo.
-3. Set the **hotspot** (the dot = part that must never be cropped, usually faces).
-4. Fill in **alt text** (e.g. "Ana and Luis laughing on the beach at sunset").
-5. Untick **placeholder** → Publish.
+## Adding one of our photos
+**In the Studio (no code):** open `/studio` → find the spot (e.g. Site Settings → Home page → Hero photo) → Upload → drag the **hotspot** dot onto our faces → write the description → untick "Still a placeholder?" → Publish.
 
-Or ask Claude: *"swap hero-main with this photo"* (uses the `swap-placeholder-image` skill).
+**In code:** `npm run add-photo -- ~/Downloads/photo.jpg engagement-beach 0.5 0.4` — rotates, strips location data, sizes it, and records it in `content/photos.json` (the two numbers are the focal point: 0–1 across, 0–1 down). Then reference it in `content/placeholder.ts`. Or ask Claude: *"swap the Schedule ceremony photo with this one"* (`swap-placeholder-image` skill).
 
 ## Slots
 
-| Slot ID | Where | Aspect | Min size | Notes |
-|---|---|---|---|---|
-| `hero-main` | Home hero | 16:9 (mobile crops 9:16) | 2400×1350 | Most important photo. Faces centered or rule-of-thirds |
-| `hero-video` *(optional)* | Home hero loop | 16:9 | 1080p, ≤ 8s, ≤ 4 MB | Muted MP4 + WebM |
-| `intro-portrait` | Home intro | 4:5 | 1200×1500 | |
-| `story-01` … `story-08` | Our Story timeline | 4:5 or 3:2 | 1400 wide | One per moment |
-| `venue-ceremony` | Schedule | 3:2 | 1800×1200 | |
-| `venue-reception` | Schedule | 3:2 | 1800×1200 | |
-| `travel-city` | Travel & Stay header | 21:9 | 2400×1030 | City/landscape shot |
-| `hotel-01` … `hotel-04` | Hotel cards | 4:3 | 1200×900 | Hotels usually supply these |
-| `party-*` | Wedding Party | 1:1 | 800×800 | One per person |
-| `gallery-*` | Gallery | mixed | 2000 long edge | 15–40 photos |
-| `registry-banner` | Registry | 3:1 | 2400×800 | |
-| `og-share` | Link preview in texts/social | 1.91:1 | 1200×630 | Names + date overlaid |
-| `monogram` | Nav, footer, favicon | SVG | — | Our initials |
+| Slot | Where | Now | Best shape |
+|---|---|---|---|
+| Hero | Home, top | ✅ `engagement-dip-kiss` | Vertical → tall panel on desktop; horizontal → full-bleed |
+| Link preview | Texts / social (names + date added automatically) | ✅ `engagement-save-the-date` | Any; faces + sign |
+| Intro | Home, "Welcome" | ✅ `engagement-cheek-kiss` | 4:5 |
+| Our Story (6) | Story timeline + home collage | ✅ engagement + proposal photos | 4:5 or 3:2 |
+| Gallery | Home strip + Gallery page | ✅ all 10 photos | Any (shown uncropped) |
+| Registry banner | Registry | ✅ `engagement-ring-embrace` (ring detail) | 3:1 crop |
+| Ceremony / reception venue | Schedule | ⏳ placeholder | 3:2, 1800×1200 |
+| Travel | Travel page + home teaser | ⏳ placeholder | 21:9 city / landscape |
+| Hotels (3) | Travel page | ⏳ placeholder | 4:3 — hotels usually supply these |
+| Wedding party (8) | Wedding Party page | ⏳ placeholder | 4:5 portraits, one per person |
+| Things to Do (2) | Example custom page | ⏳ placeholder | 4:3 |
+| Monogram / favicon | Menu, footer, browser tab | ✅ generated from our initials | — |
 
-## Tips for our real photos
-- Export JPG at high quality; Sanity auto-converts to AVIF/WebP and resizes.
-- Keep a consistent edit/color grade across the set — it makes the site look designed.
-- Horizontal shots for heroes, vertical for portraits/story.
+## About our photos
+- Engagement photos are by **Roy Esparza Photography** — the watermark is kept and he's credited on the Gallery page and footer. Ask him for web-size files and confirm he's happy with them being posted with credit.
+- Location data (GPS) was removed from every photo added.
+- Keep a consistent edit/color grade across new photos — it makes the site look designed.

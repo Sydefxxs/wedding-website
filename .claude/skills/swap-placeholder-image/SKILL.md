@@ -10,7 +10,7 @@ description: Replace a temporary placeholder photo on the wedding site with a re
 3. **Prepare.** Strip GPS/EXIF location data (`exiftool -gps:all= -overwrite_original`), keep color profile, export high-quality JPG. Don't resize down — Sanity's CDN handles sizes.
 4. **Upload.** Upload to Sanity (`client.assets.upload('image', stream, { filename: '<slot-id>.jpg' })`) and patch the document field that uses the slot.
 5. **Hotspot.** Set hotspot to the faces/subject (ask the couple if unsure).
-6. **Alt text.** Write a specific description ("Ana and Luis dancing under string lights"), not "photo".
+6. **Alt text.** Write a specific description ("Arath and Ruby dancing under string lights"), not "photo".
 7. **Unflag.** Set `placeholder: false`. Update the slot row in `docs/PLACEHOLDER_IMAGES.md` to ✅.
 8. **Verify** the page at 375px and 1440px — crop, scrim contrast over the photo, and LCP still fast.
 
