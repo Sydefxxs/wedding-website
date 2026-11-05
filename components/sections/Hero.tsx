@@ -16,7 +16,7 @@ export function Hero({ s }: { s: SiteSettings }) {
   const portrait = s.heroImage.height > s.heroImage.width
 
   return (
-    <section className="relative isolate flex min-h-[100svh] items-end overflow-hidden bg-ink text-white">
+    <section className="relative isolate flex min-h-[100svh] items-end overflow-hidden bg-night text-white">
       <div className={cn('absolute inset-0 -z-10', portrait && 'md:left-auto md:w-[46vw]')}>
         {portrait ? (
           // No parallax overscan for vertical photos — it would push faces up under the menu
@@ -29,7 +29,7 @@ export function Hero({ s }: { s: SiteSettings }) {
         {/* Scrims: top for the menu, bottom for the names (phones / landscape) */}
         <div aria-hidden className="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-black/55 to-transparent" />
         <div aria-hidden className={cn('absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-black/5', portrait && 'md:hidden')} />
-        {portrait && <div aria-hidden className="absolute inset-y-0 left-0 hidden w-32 bg-gradient-to-r from-ink to-transparent md:block" />}
+        {portrait && <div aria-hidden className="absolute inset-y-0 left-0 hidden w-32 bg-gradient-to-r from-night to-transparent md:block" />}
       </div>
       <div aria-hidden className="grain absolute inset-0 -z-10" />
 
@@ -41,7 +41,7 @@ export function Hero({ s }: { s: SiteSettings }) {
         <h1 className={cn('font-display font-light', portrait ? 'text-display md:text-[min(9.5rem,9.2vw)]' : 'text-display')}>
           <span className="block"><SplitReveal text={s.partnerOne} immediate delay={650} /></span>
           <span className={cn('block', portrait ? 'pl-[0.55em]' : 'pl-[0.6em] md:pl-[1.4em]')}>
-            <em className="font-light text-gold-light">
+            <em className="font-light text-rose">
               <SplitReveal text="&" immediate delay={950} />
             </em>{' '}
             <SplitReveal text={s.partnerTwo} immediate delay={1050} />

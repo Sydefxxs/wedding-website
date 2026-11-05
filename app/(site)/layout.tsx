@@ -23,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export const viewport: Viewport = { themeColor: '#fffdfa' }
+export const viewport: Viewport = { themeColor: '#0e0c0d' }
 
 export default async function SiteLayout({ children }: { children: React.ReactNode }) {
   const { settings } = await getContent()

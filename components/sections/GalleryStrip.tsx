@@ -39,7 +39,7 @@ export function GalleryStrip({ images }: { images: GalleryImage[] }) {
   const shown = images.slice(0, 9)
 
   return (
-    <section ref={section} className="relative overflow-hidden bg-ink py-20 text-paper md:flex md:h-screen md:items-center md:py-0">
+    <section ref={section} className="relative overflow-hidden bg-night py-20 text-ink md:flex md:h-screen md:items-center md:py-0">
       <div
         ref={track}
         className="flex snap-x snap-mandatory items-center gap-5 overflow-x-auto px-5 [scrollbar-width:none] md:gap-8 md:overflow-visible md:px-[8vw] md:will-change-transform"
@@ -54,7 +54,7 @@ export function GalleryStrip({ images }: { images: GalleryImage[] }) {
           return (
             <figure key={img.id} className={landscape ? 'w-[85vw] shrink-0 snap-center md:w-[42vw]' : 'w-[65vw] shrink-0 snap-center md:w-[24vw]'} style={{ marginTop: `${(i % 3) * 3}vh` }}>
               <Photo image={img} sizes="(min-width: 768px) 40vw, 85vw" className={landscape ? 'aspect-[3/2] w-full' : 'aspect-[4/5] w-full'} />
-              {img.caption && <figcaption className="mt-3 text-sm text-paper/60">{img.caption}</figcaption>}
+              {img.caption && <figcaption className="mt-3 text-sm text-ink/60">{img.caption}</figcaption>}
             </figure>
           )
         })}

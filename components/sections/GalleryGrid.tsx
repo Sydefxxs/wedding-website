@@ -66,7 +66,7 @@ export function GalleryGrid({ images }: { images: GalleryImage[] }) {
           role="dialog"
           aria-modal="true"
           aria-label="Photo viewer"
-          className="fixed inset-0 z-[70] flex items-center justify-center bg-ink/95 p-4 text-paper md:p-12"
+          className="fixed inset-0 z-[70] flex items-center justify-center bg-night/95 p-4 text-ink md:p-12"
           onClick={(e) => e.target === e.currentTarget && close()}
           onTouchStart={(e) => (touchX.current = e.touches[0].clientX)}
           onTouchEnd={(e) => {
@@ -78,7 +78,7 @@ export function GalleryGrid({ images }: { images: GalleryImage[] }) {
         >
           <figure key={current.id} className="page-in relative flex max-h-full w-full max-w-6xl flex-col items-center">
             <Photo image={current} fill={false} sizes="100vw" className="max-h-[82vh] w-auto object-contain" />
-            <figcaption className="mt-4 text-sm text-paper/70">
+            <figcaption className="mt-4 text-sm text-ink/70">
               {current.caption ?? current.alt} <span className="ml-3 tabular-nums">{(index ?? 0) + 1} / {images.length}</span>
             </figcaption>
           </figure>

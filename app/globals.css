@@ -1,25 +1,26 @@
 @import "tailwindcss";
 
 /* ───── Design tokens (mirror DESIGN.md — change values here, not in components) ───── */
-/* "Ruby & Gold" — white wedding, red accents, gold details */
+/* "Noir & Rose" — dark and elegant, gold details, a few rose-red touches */
 :root {
-  --paper: #fffdfa;        /* warm white — page background */
-  --paper-2: #f7f1e7;      /* champagne cream — alternate sections */
-  --ink: #1b1517;          /* near-black — text, dark sections */
-  --ink-2: #5e5459;        /* secondary text */
-  --line: #e6dccd;         /* hairlines */
-  --primary: #8f1d2c;      /* ruby red — buttons, links, italic highlights */
-  --primary-hover: #741522;
-  --primary-ink: #ffffff;
-  --accent: #806128;       /* antique gold — small labels on light backgrounds (5:1) */
-  --gold: #a9843f;         /* gold — rings, dividers, ornaments, large type */
-  --gold-light: #d9bc7a;   /* gold on dark backgrounds */
-  --wine: #4a0f18;         /* deep red band — footer, favicon, share card */
-  --success: #3f7a4f;
-  --warning: #a06f12;
-  --error: #b3261e;
+  --paper: #0e0c0d;        /* page background — warm near-black */
+  --paper-2: #161214;      /* alternate sections */
+  --night: #080707;        /* deepest — hero panel, gallery strip, footer */
+  --ink: #f4ede4;          /* ivory — main text */
+  --ink-2: #b5aaa3;        /* secondary text */
+  --line: #2e2729;         /* hairlines */
+  --primary: #c9a961;      /* gold — buttons, links, focus */
+  --primary-hover: #dcc188;
+  --primary-ink: #0e0c0d;  /* text on gold */
+  --accent: #c9a961;       /* gold — small labels */
+  --gold: #c9a961;         /* gold — rings, dividers, ornaments */
+  --gold-light: #e2cb92;   /* brighter gold for the darkest areas */
+  --rose: #d14b5f;         /* rose red — ampersands and one or two words, nothing more */
+  --success: #7fbf8e;
+  --warning: #e0b354;
+  --error: #ef7b7b;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 @theme inline {
@@ -34,7 +35,8 @@
   --color-accent: var(--accent);
   --color-gold: var(--gold);
   --color-gold-light: var(--gold-light);
-  --color-wine: var(--wine);
+  --color-night: var(--night);
+  --color-rose: var(--rose);
   --color-success: var(--success);
   --color-warning: var(--warning);
   --color-error: var(--error);
@@ -215,7 +217,10 @@ html.lenis, html.lenis body { height: auto; }
 @keyframes curtain-up { from { transform: translateY(0); } to { transform: translateY(-101%); } }
 @keyframes page-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
 .page-curtain { animation: curtain-up 0.9s var(--ease-out) 0.05s both; }
-.page-in { animation: page-in 0.9s var(--ease-out) 0.25s both; }
+/* "backwards" (not "both"): once finished, no transform is left on the wrapper.
+   A leftover transform — even an identity one — breaks position:fixed inside it,
+   which made the pinned gallery scroll away and leave a blank stretch. */
+.page-in { animation: page-in 0.9s var(--ease-out) 0.25s backwards; }
 
 @keyframes ring-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
 .monogram-ring { stroke-dashoffset: 1; animation: ring-draw 2.2s var(--ease-out) 0.6s both; }

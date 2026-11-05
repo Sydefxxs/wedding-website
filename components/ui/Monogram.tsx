@@ -16,7 +16,7 @@ export function Monogram({ a, b, className, draw = false, dark = false }: { a: s
       </svg>
       <span aria-hidden className="font-display text-[0.42em] leading-none tracking-wide">
         {a[0]}
-        <em className={cn('mx-[0.12em] font-light not-italic', dark ? 'text-gold-light' : 'text-primary')}>&amp;</em>
+        <em className={cn('mx-[0.12em] font-light not-italic', 'text-rose')}>&amp;</em>
         {b[0]}
       </span>
     </span>
