@@ -28,5 +28,12 @@ cp preview/opengraph-image.png "app/(site)/opengraph-image.png"
 
 npx next build
 
+# Static export writes icon/share images under one hashed name but links them under another → copy to the linked names
+for kind in icon opengraph-image; do
+  linked=$(grep -o "${kind}-[a-z0-9]*\.png" out/index.html | head -1 || true)
+  built=$(ls out | grep -E "^${kind}-[a-z0-9]+\.png$" | head -1 || true)
+  if [ -n "$linked" ] && [ -n "$built" ] && [ "$linked" != "$built" ]; then cp "out/$built" "out/$linked"; fi
+done
+
 touch out/.nojekyll
 echo "✓ Static preview in ./out (base path ${PAGES_BASE_PATH})"
