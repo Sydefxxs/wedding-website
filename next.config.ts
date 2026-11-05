@@ -8,9 +8,10 @@ const pagesBase = process.env.PAGES_BASE_PATH
 const isPages = pagesBase !== undefined
 
 const nextConfig: NextConfig = {
-  cacheComponents: true,
-  partialPrefetching: true,
-  ...(isPages ? { output: 'export' as const, basePath: pagesBase, trailingSlash: true } : {}),
+  // Static export can't use partial prerendering, so the Pages preview turns it off (and keeps 'use cache')
+  cacheComponents: !isPages,
+  partialPrefetching: !isPages,
+  ...(isPages ? { output: 'export' as const, basePath: pagesBase, trailingSlash: true, experimental: { useCache: true } } : {}),
   env: { NEXT_PUBLIC_BASE_PATH: pagesBase ?? '' },
   // The link-preview image reads our photo + fonts from disk; make sure hosts bundle them with that route
   outputFileTracingIncludes: {
