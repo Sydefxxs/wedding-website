@@ -92,6 +92,8 @@ async function main() {
     registryImage: await photo(C.registry.image),
     nav: s.nav.map((n, i) => ({ _key: key(i), _type: 'navLink', ...n })),
     footerNote: s.footerNote,
+    guestUploadsOpen: true,
+    moderateGuestPhotos: false,
   })
 
   for (const e of C.events) {

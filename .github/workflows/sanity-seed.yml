@@ -1,0 +1,42 @@
+# One-click: copy all site content + photos into Sanity.
+# Run it from GitHub → Actions → "Load content into Sanity" → Run workflow.
+# Needs repo settings → Secrets and variables → Actions:
+#   Variable  SANITY_PROJECT_ID        (the project ID from sanity.io/manage)
+#   Secret    SANITY_API_WRITE_TOKEN   (an Editor token from sanity.io/manage → API → Tokens)
+# Safe to re-run: it replaces the starter documents, it never touches RSVPs or guest photos.
+name: Load content into Sanity
+
+on:
+  workflow_dispatch:
+    inputs:
+      demo_guest:
+        description: Also add a "Test Guest" invitation for trying the RSVP
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+jobs:
+  seed:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Check setup
+        env:
+          PID: ${{ vars.SANITY_PROJECT_ID }}
+          TOKEN: ${{ secrets.SANITY_API_WRITE_TOKEN }}
+        run: |
+          [ -n "$PID" ] || { echo "::error::Add the SANITY_PROJECT_ID variable (Settings → Secrets and variables → Actions → Variables)"; exit 1; }
+          [ -n "$TOKEN" ] || { echo "::error::Add the SANITY_API_WRITE_TOKEN secret (Settings → Secrets and variables → Actions → Secrets)"; exit 1; }
+      - name: Seed
+        env:
+          NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ vars.SANITY_PROJECT_ID }}
+          NEXT_PUBLIC_SANITY_DATASET: production
+          SANITY_API_WRITE_TOKEN: ${{ secrets.SANITY_API_WRITE_TOKEN }}
+        run: npx tsx scripts/seed-sanity.ts ${{ inputs.demo_guest && '--demo-guest' || '' }}

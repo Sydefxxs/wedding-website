@@ -27,6 +27,8 @@ Each phase ends with something we can open and react to. Agents/skills reference
 - [x] "Still placeholder" list in the Studio
 - [x] Webhook route for instant updates
 - [x] `npm run seed` — loads all content + photos into Sanity
+- [x] One-click GitHub Action "Load content into Sanity" (keys stay in GitHub secrets)
+- [x] Studio **RSVPs** tab: counts per event, who hasn't replied, CSV download
 - [ ] Create the Sanity project + tokens, run the seed *(needs our Sanity login — `docs/SETUP.md` §2)*
 - [ ] Click-to-edit Visual Editing (Presentation tool)
 

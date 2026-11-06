@@ -6,6 +6,7 @@ import { visionTool } from '@sanity/vision'
 import { apiVersion, dataset, projectId } from './sanity/env'
 import { schemaTypes } from './sanity/schemaTypes'
 import { structure } from './sanity/structure'
+import { RsvpTool } from './sanity/tools/RsvpTool'
 
 export default defineConfig({
   basePath: '/studio',
@@ -22,4 +23,5 @@ export default defineConfig({
       ctx.schemaType === 'siteSettings' ? actions.filter((a) => a.action !== 'duplicate' && a.action !== 'delete') : actions,
   },
   plugins: [structureTool({ structure }), visionTool({ defaultApiVersion: apiVersion })],
+  tools: (prev) => [...prev, { name: 'rsvps', title: 'RSVPs', component: RsvpTool }],
 })

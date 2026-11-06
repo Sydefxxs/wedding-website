@@ -1,54 +1,63 @@
-# Setup — from this repo to a live, editable site
+# Turning on the back end (saved RSVPs, photo uploads, editor)
 
-The site already runs without any accounts (on the starter content in `content/placeholder.ts`). These steps connect the editor (Sanity) and put it online (Vercel). About 20 minutes, all free tiers.
+Everything is built — these steps just create the free accounts and connect them. They need your logins, so you click them; about 15 minutes. Do them in order.
 
-## 0. Preview (already live)
-**https://sydefxxs.github.io/wedding-website/** — GitHub Pages, rebuilt by `.github/workflows/pages.yml` on every push to `main` using `scripts/build-pages.sh`. Static only: RSVP is a demo (try "Test Guest"), no editor. Use it to look and share with each other; send guests the Vercel/domain version once RSVPs save.
+## 1. Sanity — where content, RSVPs and guest photos are stored
+1. Go to **sanity.io/manage** → sign up / log in (use Google or GitHub).
+2. **Create new project** → name it `Arath & Ruby Wedding` → dataset **production** → *Public* is fine.
+3. Copy the **Project ID** (a short code like `ab12cd34`) — send it to Claude, it's not secret.
+4. In the project: **API → Tokens → Add API token** → name `website` → permission **Editor** → copy the token (it's only shown once). **Keep this one private — don't paste it in chat.**
 
-## 1. Run it on your computer
-```bash
-npm install
-npm run dev          # http://localhost:3000
-```
+## 2. GitHub — store the keys and load the content
+1. Go to **github.com/Sydefxxs/wedding-website → Settings → Secrets and variables → Actions**.
+2. **Secrets** tab → *New repository secret* → name `SANITY_API_WRITE_TOKEN`, value = the token.
+3. **Variables** tab → *New repository variable* → name `SANITY_PROJECT_ID`, value = the Project ID.
+4. **Actions** tab → **Load content into Sanity** → *Run workflow*. When it turns green, every page, photo, event and FAQ is in Sanity.
 
-## 2. Create the Sanity project (the editor)
-1. Go to **sanity.io/manage** → sign in (Google/GitHub) → **Create new project** → name it "Arath & Ruby Wedding", dataset `production`.
-2. Copy the **Project ID**.
-3. **API → Tokens → Add API token** → name "website", permission **Editor** → copy it (shown once).
-4. **API → CORS origins → Add**: `http://localhost:3000` (allow credentials) — later also your live domain.
-5. Create `.env.local` in the project folder (never commit it):
-   ```
-   NEXT_PUBLIC_SANITY_PROJECT_ID=your-project-id
-   NEXT_PUBLIC_SANITY_DATASET=production
-   SANITY_API_WRITE_TOKEN=the-token
-   SANITY_REVALIDATE_SECRET=any-long-random-string
-   ```
-6. Load everything in: `npm run seed -- --demo-guest` → uploads all photos and content, plus a "Test Guest" invitation.
-7. Restart `npm run dev` and open **http://localhost:3000/studio**. Everything you see on the site is now editable there.
+## 3. Vercel — the real website (the GitHub Pages one stays as a preview)
+1. Go to **vercel.com** → *Sign up with GitHub*.
+2. **Add New → Project** → import `Sydefxxs/wedding-website`.
+3. Before clicking Deploy, open **Environment Variables** and add:
 
-## 3. Add the guest list
-1. Fill in `docs/guest-list-template.csv` (one row per invitation; separate names with `;`).
-2. `npm run import-guests -- docs/guest-list-template.csv` → preview
-3. `npm run import-guests -- docs/guest-list-template.csv --commit` → save
-4. Guests then find themselves on `/rsvp` by typing their full name. RSVPs appear in Studio → **Private → RSVPs**.
+   | Name | Value |
+   |---|---|
+   | `NEXT_PUBLIC_SANITY_PROJECT_ID` | the Project ID |
+   | `NEXT_PUBLIC_SANITY_DATASET` | `production` |
+   | `SANITY_API_WRITE_TOKEN` | the token |
+   | `SANITY_REVALIDATE_SECRET` | any long made-up password, e.g. `rosesandgold-2027-xyz` |
 
-## 4. Put it online (Vercel)
-1. **vercel.com** → sign in with GitHub → **Add New → Project** → import `Sydefxxs/wedding-website`.
-2. Add the same environment variables as `.env.local` (Settings → Environment Variables), plus `NEXT_PUBLIC_SITE_URL=https://your-domain.com`.
-3. Deploy. Every push to `main` redeploys; every branch gets a preview link.
-4. In Sanity → **API → CORS origins**, add your Vercel URL / domain.
+4. **Deploy**. You get a link like `wedding-website-xxxx.vercel.app`.
 
-## 5. Instant updates when you hit Publish
-Sanity → **API → Webhooks → Create**:
-- URL: `https://your-domain.com/api/revalidate`
-- Dataset: production · Trigger on: create, update, delete
-- Secret: the same `SANITY_REVALIDATE_SECRET`
-- HTTP method: POST, API version: v2025-02-19 (or newer)
+## 4. Let the editor run on that link
+In **sanity.io/manage → your project → API → CORS origins → Add**: your Vercel link (e.g. `https://wedding-website-xxxx.vercel.app`), tick **Allow credentials**. Later add your domain the same way.
 
-## 6. Custom domain
-Vercel → Project → **Settings → Domains** → add e.g. `arathandruby.com` and follow the DNS steps.
+Now open **your-link/studio**, log in with the same Sanity account — that's the editor.
 
-## Privacy defaults
-- Search engines are told not to index the site (`robots: noindex` in `app/(site)/layout.tsx`).
-- The guest list is never sent to the browser; lookups and RSVPs run on the server with the write token.
-- Photos added with `npm run add-photo` have their location data removed.
+## 5. Instant updates (optional but nice)
+**sanity.io/manage → API → Webhooks → Create webhook**:
+- URL: `https://your-link/api/revalidate`
+- Dataset: production · Trigger on: Create, Update, Delete
+- HTTP method: POST · Secret: the same `SANITY_REVALIDATE_SECRET`
+
+Without this, edits still show up — just within about an hour instead of seconds.
+
+## 6. Guest list
+Fill in `docs/guest-list-template.csv` (one row per invitation, names separated by `;`) and send it to Claude, or add invitations by hand in the Studio under **Private → Guest list**. Guests find themselves on the RSVP page by typing their full name.
+
+---
+
+### Where things are once it's on
+| What | Where |
+|---|---|
+| Edit any text or photo | `/studio` → the matching section |
+| See RSVPs + download a spreadsheet | `/studio` → **RSVPs** tab at the top |
+| Guest photos (hide any) | `/studio` → **Guest photos** |
+| Approval / upload code / close uploads | `/studio` → Site Settings → **Guest photos** |
+
+### Privacy defaults
+- Search engines are told not to list the site.
+- The guest list never reaches the browser; lookups, RSVPs and uploads run on the server.
+- Photos lose their location data before they're stored.
+
+### For developers
+`npm run dev` (needs `.env.local` with the same variables) · `npm run seed` · `npm run import-guests -- file.csv [--commit]`.
