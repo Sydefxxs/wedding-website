@@ -55,7 +55,7 @@ Each phase ends with something we can open and react to. Agents/skills reference
 - [x] Per-person, per-event answers, dietary needs, song request, note
 - [x] Confirmation screen; validation; works in demo mode now
 - [x] Guest list CSV import (`npm run import-guests`, preview first)
-- [ ] Turn on saving to Sanity (happens automatically once Phase 2 is connected)
+- [x] Turn on saving to Sanity
 - [ ] Optional: confirmation email (Resend) · "edit my RSVP" link · CSV export of responses
 
 ## Phase 5b — Guest photo sharing 🟡
