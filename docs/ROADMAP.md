@@ -19,7 +19,8 @@ Each phase ends with something we can open and react to. Agents/skills reference
 - [x] Layout: menu that turns solid on scroll (RSVP always visible), full-screen phone menu, footer
 - [x] Lenis smooth scroll + reduced-motion fallback
 - [x] Live preview on GitHub Pages → https://sydefxxs.github.io/wedding-website/ (auto-deploys on push)
-- [ ] Full site on Vercel (saved RSVPs, editor, custom domain) *(needs our Vercel login — `docs/SETUP.md` §4)*
+- [x] Full site on Vercel (saved RSVPs, editor) — project `wedding-website`
+- [ ] Custom domain
 
 ## Phase 2 — CMS (make it editable) 🟡
 - [x] Embedded Studio at `/studio`, sidebar organized for us
@@ -29,7 +30,7 @@ Each phase ends with something we can open and react to. Agents/skills reference
 - [x] `npm run seed` — loads all content + photos into Sanity
 - [x] One-click GitHub Action "Load content into Sanity" (keys stay in GitHub secrets)
 - [x] Studio **RSVPs** tab: counts per event, who hasn't replied, CSV download
-- [ ] Create the Sanity project + tokens, run the seed *(needs our Sanity login — `docs/SETUP.md` §2)*
+- [x] Sanity project created (ID `8wf6040b`, dataset `production`), keys stored, content seeded
 - [ ] Click-to-edit Visual Editing (Presentation tool)
 
 ## Phase 3 — Pages ✅
