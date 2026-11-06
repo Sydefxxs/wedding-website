@@ -5,6 +5,7 @@ import { getContent } from '@/lib/content'
 import { Nav } from '@/components/layout/Nav'
 import { Footer } from '@/components/layout/Footer'
 import { SmoothScroll } from '@/components/motion/SmoothScroll'
+import { COLOR_FIELDS, colorCss, isHex } from '@/lib/colors'
 
 export async function generateMetadata(): Promise<Metadata> {
   const { settings: s } = await getContent()
@@ -23,7 +24,11 @@ export async function generateMetadata(): Promise<Metadata> {
   }
 }
 
-export const viewport: Viewport = { themeColor: '#0e0c0d' }
+export async function generateViewport(): Promise<Viewport> {
+  const { settings } = await getContent()
+  const bg = settings.colors?.background
+  return { themeColor: isHex(bg) ? bg : COLOR_FIELDS[0].default }
+}
 
 export default async function SiteLayout({ children }: { children: React.ReactNode }) {
   const { settings } = await getContent()
@@ -32,6 +37,8 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
       <head>
         {/* Only hide-then-reveal content once we know JS is running */}
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+        {/* Colors picked in the Studio (Site Settings → Colors) override the defaults in globals.css */}
+        {colorCss(settings.colors) && <style dangerouslySetInnerHTML={{ __html: colorCss(settings.colors) }} />}
       </head>
       <body>
         <SmoothScroll />

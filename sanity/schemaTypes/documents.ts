@@ -1,5 +1,7 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
 import { pageSections } from './objects'
+import { COLOR_FIELDS } from '../../lib/colors'
+import { ColorInput } from '../components/ColorInput'
 
 const order = defineField({
   name: 'order',
@@ -19,6 +21,7 @@ export const siteSettings = defineType({
     { name: 'rsvp', title: 'RSVP page' },
     { name: 'registry', title: 'Registry page' },
     { name: 'photos', title: 'Guest photos' },
+    { name: 'colors', title: 'Colors' },
     { name: 'site', title: 'Menu & footer' },
   ],
   fields: [
@@ -56,6 +59,24 @@ export const siteSettings = defineType({
     defineField({ name: 'guestUploadsOpen', title: 'Guests can upload photos', type: 'boolean', group: 'photos', initialValue: true }),
     defineField({ name: 'moderateGuestPhotos', title: 'Approve photos before they appear', type: 'boolean', group: 'photos', initialValue: false, description: 'When on, new uploads stay hidden until you untick "Hidden" on them.' }),
     defineField({ name: 'guestUploadCode', title: 'Upload code (optional)', type: 'string', group: 'photos', description: 'If set, guests must type this code to upload — print it on table cards. Leave empty for no code.' }),
+    defineField({
+      name: 'colors',
+      title: 'Site colors',
+      type: 'object',
+      group: 'colors',
+      description: 'Pick a color, then Publish — the site updates in a few seconds. Leave a color empty (or click "Back to original") to keep the original.',
+      options: { collapsible: false },
+      fields: COLOR_FIELDS.map((c) =>
+        defineField({
+          name: c.key,
+          title: c.title,
+          type: 'string',
+          description: c.hint,
+          components: { input: ColorInput },
+          validation: (r) => r.regex(/^#[0-9a-fA-F]{6}$/, { name: 'hex color' }).warning(),
+        }),
+      ),
+    }),
     defineField({ name: 'shareImage', title: 'Link preview photo', type: 'photo', group: 'site', description: 'Shown when the link is texted or posted. Our names and date are added on top automatically.' }),
     defineField({ name: 'photoCredit', title: 'Photo credit', type: 'string', group: 'site', description: 'e.g. "Engagement photos by Roy Esparza Photography" — shown on the Gallery page and footer.' }),
     defineField({ name: 'nav', title: 'Menu links', type: 'array', group: 'site', of: [defineArrayMember({ type: 'navLink' })] }),

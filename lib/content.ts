@@ -93,6 +93,7 @@ export async function getContent(): Promise<SiteContent> {
       contactEmail: s.contactEmail ?? undefined,
       nav: s.nav?.length ? s.nav : P.settings.nav,
       footerNote: pick(s.footerNote, P.settings.footerNote),
+      colors: s.colors ?? undefined,
     },
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     events: (d.events ?? []).map((e: any, i: number) => ({

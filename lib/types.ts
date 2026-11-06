@@ -26,6 +26,8 @@ export type RsvpCopy = {
   plusOnes: boolean
 }
 
+import type { SiteColors } from './colors'
+
 export type SiteSettings = {
   partnerOne: string
   partnerTwo: string
@@ -48,6 +50,8 @@ export type SiteSettings = {
   contactEmail?: string
   nav: NavLink[]
   footerNote: string
+  /** the couple's color overrides (empty = original colors) */
+  colors?: SiteColors
 }
 
 export type WeddingEvent = {
