@@ -73,7 +73,7 @@ export const placeholderContent: SiteContent = {
       mapUrl: 'https://www.google.com/maps/search/?api=1&query=Santa+Fe+Event+Center+266+Mexico+Blvd+Brownsville+TX+78520',
       attire: 'Formal',
       description: 'Please arrive early so you can find your seat before we begin. This is an unplugged ceremony — no cellphones, please!',
-      image: img('venue-ceremony', 'Placeholder — Santa Fe Event Center'),
+      image: photo('venue-santa-fe', 'The lit-up entrance of Santa Fe Event Center at dusk'),
     },
     {
       id: 'dinner',

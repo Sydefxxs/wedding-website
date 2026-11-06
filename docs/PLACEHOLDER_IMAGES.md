@@ -20,7 +20,7 @@ Each image "slot" has a fixed place on the site, so swapping one never breaks th
 | Our Story (6) | Story timeline + home collage | ✅ engagement + proposal photos | 4:5 or 3:2 |
 | Gallery | Home strip + Gallery page | ✅ all 10 photos | Any (shown uncropped) |
 | Registry banner | Registry | ✅ `engagement-ring-embrace` (ring detail) | 3:1 crop |
-| Venue (Santa Fe Event Center) | Schedule + home venue card | ⏳ placeholder | 3:2, 1800×1200 |
+| Venue (Santa Fe Event Center) | Schedule + home venue card | ✅ `venue-santa-fe` (480×640 — a larger copy would look sharper) | 3:2, 1800×1200 |
 | Wedding party (8) | Wedding Party page | ⏳ placeholder | 4:5 portraits, one per person |
 | Things to Do (2) | Example custom page | ⏳ placeholder | 4:3 |
 | Monogram / favicon | Menu, footer, browser tab | ✅ generated from our initials | — |

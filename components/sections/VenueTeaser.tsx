@@ -11,17 +11,18 @@ export function VenueTeaser({ events }: { events: WeddingEvent[] }) {
   const first = events[0]
   if (!first) return null
   const image = events.find((e) => e.image)?.image
+  const portrait = Boolean(image && image.height > image.width)
   const sameVenue = events.every((e) => e.venue === first.venue)
 
   return (
     <section className="section-y container-x">
       <div className="grid items-center gap-12 md:grid-cols-12">
         {image && (
-          <ImageReveal className="md:col-span-7">
-            <Photo image={image} sizes="(min-width: 768px) 58vw, 100vw" className="aspect-[4/3] w-full md:aspect-[3/2]" />
+          <ImageReveal className={portrait ? 'mx-auto w-full max-w-md md:col-span-5' : 'md:col-span-7'}>
+            <Photo image={image} sizes="(min-width: 768px) 40vw, 100vw" className={portrait ? 'aspect-[3/4] w-full' : 'aspect-[4/3] w-full md:aspect-[3/2]'} />
           </ImageReveal>
         )}
-        <Reveal className={image ? 'md:col-span-4 md:col-start-9' : 'md:col-span-8'}>
+        <Reveal className={image ? (portrait ? 'md:col-span-6 md:col-start-7' : 'md:col-span-4 md:col-start-9') : 'md:col-span-8'}>
           <p className="eyebrow mb-5 text-accent">The venue</p>
           <h2 className="text-h1">{first.venue}</h2>
           <p className="mt-6 flex gap-3 text-lead text-ink-2">

@@ -78,5 +78,4 @@ Each phase ends with something we can open and react to. Agents/skills reference
 - Padrinos: names, which padrinos they are, photos
 - Our Story: the text and dates for each moment
 - Registry: real Amazon link, honeymoon destination + fund link
-- Photo of Santa Fe Event Center (the salon)
-- Confirm thegarzas@gmail.com is real
+

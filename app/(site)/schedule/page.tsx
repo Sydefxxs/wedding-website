@@ -28,7 +28,7 @@ export default async function SchedulePage() {
                 <article key={e.id} id={e.id} className="grid scroll-mt-28 items-center gap-10 md:grid-cols-12">
                   {e.image && (
                     <ImageReveal className={cn('md:col-span-6', i % 2 === 1 && 'md:order-last md:col-start-7')}>
-                      <Photo image={e.image} sizes="(min-width: 768px) 50vw, 100vw" className="aspect-[3/2] w-full" />
+                      <Photo image={e.image} sizes="(min-width: 768px) 50vw, 100vw" className={e.image.height > e.image.width ? 'mx-auto aspect-[3/4] w-full max-w-md' : 'aspect-[3/2] w-full'} />
                     </ImageReveal>
                   )}
                   <Reveal className={cn(e.image ? 'md:col-span-5' : 'md:col-span-8', e.image && i % 2 === 0 && 'md:col-start-8')}>
