@@ -52,7 +52,7 @@ Each phase ends with something we can open and react to. Agents/skills reference
 
 ## Phase 5 — RSVP 🟡
 - [x] Open RSVP — anyone with the link can reply (spam honeypot + rate limit); guest list is optional, for tracking
-- [x] Family name, adults, children, plus ones (+ names), dietary needs, song request, note, phone/email
+- [x] Family name, adults, children, plus ones (+ names), song request, note, phone/email
 - [x] Personal thank-you with the family's name, editable in Site Settings → RSVP page
 - [x] Confirmation screen; validation; works in demo mode now
 - [x] Guest list CSV import (`npm run import-guests`, preview first)

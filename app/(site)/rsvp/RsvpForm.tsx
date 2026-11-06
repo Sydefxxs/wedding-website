@@ -58,7 +58,6 @@ export function RsvpForm({ copy, dateLabel, deadlineLabel, couple, contactEmail 
         guestNames: str('guestNames'),
         email: str('email'),
         phone: str('phone'),
-        dietary: str('dietary'),
         song: str('song'),
         message: str('message'),
         website: str('website'),
@@ -165,10 +164,6 @@ export function RsvpForm({ copy, dateLabel, deadlineLabel, couple, contactEmail 
             <div>
               <label htmlFor="guestNames" className={label}>Names of everyone coming (optional)</label>
               <textarea id="guestNames" name="guestNames" rows={2} className={cn(field, 'mt-1 resize-none')} placeholder="Helps us with place cards" />
-            </div>
-            <div>
-              <label htmlFor="dietary" className={label}>Allergies or dietary needs</label>
-              <input id="dietary" name="dietary" className={cn(field, 'mt-1')} placeholder="Vegetarian, nut allergy…" />
             </div>
             <div>
               <label htmlFor="song" className={label}>A song that’ll get you dancing</label>

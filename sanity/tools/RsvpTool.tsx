@@ -77,9 +77,9 @@ export function RsvpTool() {
 
   const downloadCsv = () => {
     const q = (v: unknown) => `"${String(v ?? '').replace(/"/g, '""')}"`
-    const rows: unknown[][] = [['Family', 'Replied by', 'Coming', 'Adults', 'Children', 'Plus ones', 'Plus one names', 'Total', 'Everyone coming', 'Phone', 'Email', 'Dietary', 'Song', 'Note', 'Submitted']]
+    const rows: unknown[][] = [['Family', 'Replied by', 'Coming', 'Adults', 'Children', 'Plus ones', 'Plus one names', 'Total', 'Everyone coming', 'Phone', 'Email', 'Song', 'Note', 'Submitted']]
     for (const r of latest)
-      rows.push([r.household, r.name, r.attending ? 'Yes' : 'No', r.adults ?? 0, r.children ?? 0, r.plusOnes ?? 0, r.plusOneNames, people(r), r.guestNames, r.phone, r.email, r.dietary, r.song, r.message, r.submittedAt ? new Date(r.submittedAt).toLocaleString() : ''])
+      rows.push([r.household, r.name, r.attending ? 'Yes' : 'No', r.adults ?? 0, r.children ?? 0, r.plusOnes ?? 0, r.plusOneNames, people(r), r.guestNames, r.phone, r.email, r.song, r.message, r.submittedAt ? new Date(r.submittedAt).toLocaleString() : ''])
     for (const g of waiting) rows.push([g.household, g.members?.join(', '), 'No reply yet'])
     const blob = new Blob(['﻿' + rows.map((r) => r.map(q).join(',')).join('\r\n')], { type: 'text/csv;charset=utf-8' })
     const a = document.createElement('a')
@@ -109,7 +109,7 @@ export function RsvpTool() {
           <div style={{ overflowX: 'auto' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse' }}>
               <thead>
-                <tr>{['Family', 'Coming', 'Who', 'Dietary', 'Song', 'Note', 'When'].map((h) => <th key={h} style={{ ...cell, fontWeight: 600 }}>{h}</th>)}</tr>
+                <tr>{['Family', 'Coming', 'Who', 'Song', 'Note', 'When'].map((h) => <th key={h} style={{ ...cell, fontWeight: 600 }}>{h}</th>)}</tr>
               </thead>
               <tbody>
                 {latest.map((r) => (
@@ -126,13 +126,12 @@ export function RsvpTool() {
                       {r.guestNames}
                       {r.plusOneNames && <div style={{ color: '#777', fontSize: 12 }}>Plus one: {r.plusOneNames}</div>}
                     </td>
-                    <td style={cell}>{r.dietary}</td>
                     <td style={cell}>{r.song}</td>
                     <td style={cell}>{r.message}</td>
                     <td style={cell}>{r.submittedAt ? new Date(r.submittedAt).toLocaleDateString() : ''}</td>
                   </tr>
                 ))}
-                {latest.length === 0 && <tr><td style={cell} colSpan={7}>No RSVPs yet.</td></tr>}
+                {latest.length === 0 && <tr><td style={cell} colSpan={6}>No RSVPs yet.</td></tr>}
               </tbody>
             </table>
           </div>
