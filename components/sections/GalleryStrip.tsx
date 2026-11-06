@@ -28,6 +28,7 @@ export function GalleryStrip({ images }: { images: GalleryImage[] }) {
           start: 'top top',
           end: () => `+=${distance()}`,
           pin: true,
+          anticipatePin: 1, // no jump at the moment it locks in place
           scrub: 0.6,
           invalidateOnRefresh: true,
         },

@@ -15,11 +15,14 @@ export function Parallax({ children, amount = 10, className }: { children: React
 
   useGSAP(() => {
     const mm = gsap.matchMedia()
-    mm.add('(prefers-reduced-motion: no-preference)', () => {
-      gsap.fromTo(inner.current, { yPercent: -amount }, {
-        yPercent: amount,
+    // Gentler on phones; a short scrub lag smooths out jittery touch scrolling
+    mm.add({ motion: '(prefers-reduced-motion: no-preference)', small: '(max-width: 767px)' }, (ctx) => {
+      if (!ctx.conditions?.motion) return
+      const a = ctx.conditions.small ? amount * 0.5 : amount
+      gsap.fromTo(inner.current, { yPercent: -a }, {
+        yPercent: a,
         ease: 'none',
-        scrollTrigger: { trigger: wrap.current, start: 'top bottom', end: 'bottom top', scrub: true },
+        scrollTrigger: { trigger: wrap.current, start: 'top bottom', end: 'bottom top', scrub: 0.5 },
       })
     })
   }, { scope: wrap })

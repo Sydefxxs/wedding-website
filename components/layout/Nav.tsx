@@ -55,7 +55,7 @@ export function Nav({ links, a, b, dateLabel }: { links: NavLink[]; a: string; b
       <header
         className={cn(
           'fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,color,padding] duration-700 ease-out-expo',
-          overHero ? 'border-b border-transparent bg-transparent py-5' : 'border-b border-line bg-paper/92 py-3 backdrop-blur-sm',
+          overHero ? 'border-b border-transparent bg-transparent py-5' : 'border-b border-line bg-paper/95 py-3',
           open && 'border-transparent bg-paper',
           tone,
         )}

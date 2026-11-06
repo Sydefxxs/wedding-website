@@ -21,7 +21,7 @@ export function StoryTimeline({ story }: { story: StoryMoment[] }) {
     mm.add('(prefers-reduced-motion: no-preference)', () => {
       gsap.fromTo('.thread', { scaleY: 0 }, {
         scaleY: 1, ease: 'none',
-        scrollTrigger: { trigger: root.current, start: 'top 60%', end: 'bottom 70%', scrub: true },
+        scrollTrigger: { trigger: root.current, start: 'top 60%', end: 'bottom 70%', scrub: 0.5 },
       })
     })
   }, { scope: root })
