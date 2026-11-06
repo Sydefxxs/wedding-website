@@ -29,20 +29,24 @@ export const placeholderContent: SiteContent = {
     date: '2027-04-24T18:00:00-05:00',
     dateLabel: 'April 24, 2027',
     location: 'Brownsville, TX',
-    tagline: 'Together with our families, we invite you to celebrate with us.',
+    tagline: 'Together with our families, we invite you to celebrate the beginning of our forever.',
     heroImage: photo('engagement-dip-kiss', 'Arath dipping Ruby into a kiss between tall white columns'),
     shareImage: photo('engagement-save-the-date', 'Arath and Ruby on the steps holding a “Save the Date — 04.24.2027” sign'),
     photoCredit: CREDIT,
     intro: {
       eyebrow: 'Welcome',
-      heading: 'We’re getting married — and we want you there.',
-      body: 'We built this site so you have everything in one place: when to arrive, what to wear, and a guide on how we got here. Look around, RSVP when you’re ready, and text us if anything is unclear.',
+      heading: 'We’re getting married — and we can’t wait to celebrate with you!',
+      // Blank lines between paragraphs (\n\n) become separate paragraphs on the site
+      body:
+        'We created this website for our friends and family to find everything they need to know about our special day, from venue details and dress code to the wedding schedule.' +
+        '\n\nYou’ll also find a glimpse into our love story, with photos and memories from the beginning of our journey to where we are today.' +
+        '\n\nTake a look around, RSVP as soon as possible, and feel free to reach out if you have any questions!',
       image: photo('engagement-cheek-kiss', 'Ruby wrapping her arms around Arath and kissing his cheek'),
     },
     rsvpDeadline: '2027-03-01T23:59:00-06:00',
     rsvpDeadlineLabel: 'March 1, 2027',
     hashtag: '#ArathAndRuby',
-    contactEmail: 'thegarzas@gmail.com',
+    contactEmail: 'thegarzas04.24.2027@gmail.com',
     nav: [
       { label: 'Our Story', href: '/story' },
       { label: 'Schedule', href: '/schedule' },
@@ -129,7 +133,7 @@ export const placeholderContent: SiteContent = {
     { id: 'f5', question: 'Is there parking?', answer: 'Yes, there’s parking at Santa Fe Event Center.' },
     { id: 'f6', question: 'Will the ceremony be unplugged?', answer: 'Yes, please keep phones away during the ceremony; our photographer has it covered and we’ll share everything after.' },
     { id: 'f7', question: 'I have a dietary restriction.', answer: 'Tell us on the RSVP form and we’ll make sure you’re taken care of.' },
-    { id: 'f8', question: 'Who do I contact with questions?', answer: 'Text either of us, or email thegarzas@gmail.com and we’ll get back to you as soon as we can.' },
+    { id: 'f8', question: 'Who do I contact with questions?', answer: 'Text either of us, or email thegarzas04.24.2027@gmail.com and we’ll get back to you as soon as we can.' },
   ],
 
   registry: {

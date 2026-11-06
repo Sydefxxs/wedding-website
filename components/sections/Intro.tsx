@@ -19,8 +19,10 @@ export function Intro({ s }: { s: SiteSettings }) {
             <SplitReveal text={intro.heading} by="word" />
           </h2>
           <Reveal delay={200}>
-            <p className="text-lead mt-8 max-w-[52ch] text-ink-2">{intro.body}</p>
-            <p className="mt-6 max-w-[52ch] text-ink-2">{s.tagline}</p>
+            {intro.body.split(/\n\s*\n/).map((para, i) => (
+              <p key={i} className={i === 0 ? 'text-lead mt-8 max-w-[52ch] text-ink-2' : 'mt-5 max-w-[52ch] text-ink-2'}>{para}</p>
+            ))}
+            <p className="mt-8 max-w-[52ch] font-display text-h3 italic text-gold-light">{s.tagline}</p>
           </Reveal>
           <Reveal delay={350} className="mt-10 flex flex-wrap gap-4">
             <ButtonLink href="/schedule">See the schedule</ButtonLink>
