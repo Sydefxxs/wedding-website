@@ -41,8 +41,10 @@ Now open **your-link/studio**, log in with the same Sanity account — that's th
 
 Without this, edits still show up — just within about an hour instead of seconds.
 
-## 6. Guest list
-Fill in `docs/guest-list-template.csv` (one row per invitation, names separated by `;`) and send it to Claude, or add invitations by hand in the Studio under **Private → Guest list**. Guests find themselves on the RSVP page by typing their full name.
+## 6. Guest list (optional)
+Anyone with the link can RSVP — they type their name, their family name, how many adults and kids are coming and any plus ones, and get a personal thank-you ("The Lopez Family, we can't wait to see you there!"). Change that wording in the Studio under **Site Settings → RSVP page**.
+
+A guest list is only for tracking: fill in `docs/guest-list-template.csv` (one row per family, names separated by `;`) and send it to Claude, or add families by hand under **Private → Guest list**. The **RSVPs** tab then shows who hasn't replied yet.
 
 ---
 

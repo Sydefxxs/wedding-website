@@ -16,6 +16,7 @@ export const siteSettings = defineType({
   groups: [
     { name: 'couple', title: 'Couple & date', default: true },
     { name: 'home', title: 'Home page' },
+    { name: 'rsvp', title: 'RSVP page' },
     { name: 'registry', title: 'Registry page' },
     { name: 'photos', title: 'Guest photos' },
     { name: 'site', title: 'Menu & footer' },
@@ -38,6 +39,15 @@ export const siteSettings = defineType({
     defineField({ name: 'introHeading', title: 'Intro heading', type: 'string', group: 'home' }),
     defineField({ name: 'introBody', title: 'Intro text', type: 'text', rows: 4, group: 'home' }),
     defineField({ name: 'introImage', title: 'Intro photo', type: 'photo', group: 'home' }),
+
+    defineField({ name: 'rsvpHeading', title: 'Page heading', type: 'string', group: 'rsvp' }),
+    defineField({ name: 'rsvpIntro', title: 'Intro text', type: 'text', rows: 3, group: 'rsvp' }),
+    defineField({ name: 'rsvpYesHeading', title: 'Thank-you heading (coming)', type: 'string', group: 'rsvp', description: 'Shown after a family says yes. {family} becomes their family name, e.g. "The Lopez Family".' }),
+    defineField({ name: 'rsvpYesMessage', title: 'Thank-you message (coming)', type: 'text', rows: 3, group: 'rsvp', description: 'You can use {family}, {name} (their first name), {count} ("4 seats") and {date}.' }),
+    defineField({ name: 'rsvpNoHeading', title: 'Thank-you heading (can’t make it)', type: 'string', group: 'rsvp' }),
+    defineField({ name: 'rsvpNoMessage', title: 'Thank-you message (can’t make it)', type: 'text', rows: 3, group: 'rsvp' }),
+    defineField({ name: 'rsvpMaxParty', title: 'Most people per reply', type: 'number', group: 'rsvp', initialValue: 12, description: 'Adults + children + plus ones. Bigger groups are asked to contact you.', validation: (r) => r.min(1).max(30) }),
+    defineField({ name: 'rsvpPlusOnes', title: 'Ask about plus ones', type: 'boolean', group: 'rsvp', initialValue: true }),
 
     defineField({ name: 'registryHeading', type: 'string', group: 'registry' }),
     defineField({ name: 'registryBody', type: 'text', rows: 3, group: 'registry' }),
@@ -180,7 +190,8 @@ export const page = defineType({
 /* ── Private ── */
 export const guest = defineType({
   name: 'guest',
-  title: 'Invitation (household)',
+  title: 'Guest list entry',
+  description: 'Optional. Anyone can RSVP — this list only helps you see who hasn’t replied yet.',
   type: 'document',
   fields: [
     defineField({ name: 'household', title: 'Invitation name', type: 'string', description: 'e.g. "The Lopez Family"', validation: (r) => r.required() }),
@@ -197,10 +208,23 @@ export const rsvp = defineType({
   type: 'document',
   readOnly: true,
   fields: [
-    defineField({ name: 'guest', type: 'reference', to: [{ type: 'guest' }] }),
-    defineField({ name: 'household', type: 'string' }),
+    defineField({ name: 'household', title: 'Family', type: 'string' }),
+    defineField({ name: 'name', title: 'Replied by', type: 'string' }),
+    defineField({ name: 'attending', title: 'Coming', type: 'boolean' }),
+    defineField({ name: 'adults', type: 'number' }),
+    defineField({ name: 'children', type: 'number' }),
+    defineField({ name: 'plusOnes', title: 'Plus ones', type: 'number' }),
+    defineField({ name: 'plusOneNames', title: 'Plus one names', type: 'string' }),
+    defineField({ name: 'guestNames', title: 'Everyone coming', type: 'text', rows: 2 }),
+    defineField({ name: 'email', type: 'string' }),
+    defineField({ name: 'phone', type: 'string' }),
+    defineField({ name: 'dietary', type: 'text' }),
+    defineField({ name: 'song', title: 'Song request', type: 'string' }),
+    defineField({ name: 'message', type: 'text' }),
+    defineField({ name: 'submittedAt', type: 'datetime' }),
+    defineField({ name: 'guest', title: 'Matched guest list entry', type: 'reference', to: [{ type: 'guest' }] }),
     defineField({
-      name: 'responses', type: 'array',
+      name: 'responses', title: 'Older per-event answers', type: 'array', hidden: ({ value }) => !value,
       of: [defineArrayMember({ type: 'object', fields: [
         defineField({ name: 'member', type: 'string' }),
         defineField({ name: 'eventId', type: 'string' }),
@@ -208,12 +232,13 @@ export const rsvp = defineType({
         defineField({ name: 'attending', type: 'boolean' }),
       ] })],
     }),
-    defineField({ name: 'email', type: 'string' }),
-    defineField({ name: 'dietary', type: 'text' }),
-    defineField({ name: 'song', title: 'Song request', type: 'string' }),
-    defineField({ name: 'message', type: 'text' }),
-    defineField({ name: 'submittedAt', type: 'datetime' }),
   ],
   orderings: [{ title: 'Newest', name: 'newest', by: [{ field: 'submittedAt', direction: 'desc' }] }],
-  preview: { select: { title: 'household', subtitle: 'submittedAt' } },
+  preview: {
+    select: { family: 'household', attending: 'attending', a: 'adults', c: 'children', p: 'plusOnes' },
+    prepare: ({ family, attending, a, c, p }) => ({
+      title: family,
+      subtitle: attending ? `Coming · ${(a ?? 0) + (c ?? 0) + (p ?? 0)} people` : 'Can’t make it',
+    }),
+  },
 })

@@ -51,12 +51,14 @@ Each phase ends with something we can open and react to. Agents/skills reference
 - [x] Reduced-motion versions of everything
 
 ## Phase 5 — RSVP 🟡
-- [x] Guest finds invitation by full name (no list exposed, rate-limited)
-- [x] Per-person, per-event answers, dietary needs, song request, note
+- [x] Open RSVP — anyone with the link can reply (spam honeypot + rate limit); guest list is optional, for tracking
+- [x] Family name, adults, children, plus ones (+ names), dietary needs, song request, note, phone/email
+- [x] Personal thank-you with the family's name, editable in Site Settings → RSVP page
 - [x] Confirmation screen; validation; works in demo mode now
 - [x] Guest list CSV import (`npm run import-guests`, preview first)
 - [x] Turn on saving to Sanity
-- [ ] Optional: confirmation email (Resend) · "edit my RSVP" link · CSV export of responses
+- [x] Studio RSVPs tab: head count (adults / kids / plus ones), CSV download
+- [ ] Optional: confirmation email (Resend)
 
 ## Phase 5b — Guest photo sharing 🟡
 - [x] `/photos`: guests upload from their phones (shrunk in the browser), shared grid, viewer, download one or all (zip)

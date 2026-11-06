@@ -6,7 +6,7 @@
 >
 > **Live site:** https://wedding-website-phi-lilac.vercel.app — saved RSVPs, guest photo uploads, and the editor at `/studio`.
 >
-> **Live preview:** https://sydefxxs.github.io/wedding-website/ — rebuilt automatically on every push to `main`. It's a static preview: RSVP runs in demo mode (try “Test Guest”, nothing is saved) and the editor isn't included. The full site (saved RSVPs, `/studio`, custom domain) deploys to Vercel — see [`docs/SETUP.md`](docs/SETUP.md).
+> **Live preview:** https://sydefxxs.github.io/wedding-website/ — rebuilt automatically on every push to `main`. It's a static preview: RSVP runs in demo mode (nothing is saved) and the editor isn't included. The full site (saved RSVPs, `/studio`, custom domain) deploys to Vercel — see [`docs/SETUP.md`](docs/SETUP.md).
 
 ## What guests get
 

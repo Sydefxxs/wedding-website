@@ -13,8 +13,9 @@ Once Phase 2 is live, everything is editable at **`yourdomain.com/studio`** — 
 | Add gallery photos | **Gallery** → drag & drop many at once |
 | Hide a guest photo | **Guest photos** → open it → tick **Hidden** |
 | Approve photos before they show / set an upload code / close uploads | **Site Settings → Guest photos** |
-| See who RSVP'd | **RSVPs** (export CSV from the top menu) |
-| Add a guest | **Guests** (or send Claude a CSV) |
+| See who RSVP'd + head count | **RSVPs** tab at the top (Download spreadsheet) |
+| Change the RSVP thank-you wording | **Site Settings → RSVP page** ({family} = their family name) |
+| Track who hasn't replied (optional) | **Private → Guest list** (or send Claude a CSV) |
 
 ## Click-to-edit (Visual Editing)
 Open **Presentation** in Studio: the live site shows on the right — click any text or photo and its field opens on the left. Changes preview instantly; hit **Publish** to make them live.

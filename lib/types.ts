@@ -12,6 +12,20 @@ export type Img = {
 
 export type NavLink = { label: string; href: string }
 
+/** Wording on the RSVP page. Messages can use {family} {name} {count} {date}. */
+export type RsvpCopy = {
+  heading: string
+  intro: string
+  yesHeading: string
+  yesMessage: string
+  noHeading: string
+  noMessage: string
+  /** most people one reply can include (adults + children + plus ones) */
+  maxParty: number
+  /** show the "bringing a plus one?" question */
+  plusOnes: boolean
+}
+
 export type SiteSettings = {
   partnerOne: string
   partnerTwo: string
@@ -29,6 +43,7 @@ export type SiteSettings = {
   intro: { eyebrow: string; heading: string; body: string; image: Img }
   rsvpDeadline: string
   rsvpDeadlineLabel: string
+  rsvp: RsvpCopy
   hashtag?: string
   contactEmail?: string
   nav: NavLink[]

@@ -45,6 +45,16 @@ export const placeholderContent: SiteContent = {
     },
     rsvpDeadline: '2027-03-01T23:59:00-06:00',
     rsvpDeadlineLabel: 'March 1, 2027',
+    rsvp: {
+      heading: 'Will you join us?',
+      intro: 'We would love to celebrate with you and your family. Tell us who’s coming so we can save a seat for everyone.',
+      yesHeading: '{family}, we can’t wait to see you there!',
+      yesMessage: 'We’ve saved {count} for you on {date}. Thank you for being part of the most special day of our lives — it wouldn’t be the same without you.',
+      noHeading: '{family}, we’ll miss you!',
+      noMessage: 'Thank you for letting us know. You’ll be in our hearts on {date}, and we can’t wait to celebrate with you soon.',
+      maxParty: 12,
+      plusOnes: true,
+    },
     hashtag: '#ArathAndRuby',
     contactEmail: 'thegarzas04.24.2027@gmail.com',
     nav: [

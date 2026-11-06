@@ -12,7 +12,7 @@ on:
       demo_guest:
         description: Also add a "Test Guest" invitation for trying the RSVP
         type: boolean
-        default: true
+        default: false
 
 permissions:
   contents: read
